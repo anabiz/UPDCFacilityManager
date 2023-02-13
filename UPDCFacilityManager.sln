@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{168BBA54-2EA2-44CE-8C8C-B8CF2134F1FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{48D33C0F-342A-462F-B2DA-C062C82D6533}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrapper", "{136A9E89-DDB9-45CB-879D-9DDD2F585659}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2400F800-30DB-4A0B-882D-2DD60946D660}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{1DA7A3DB-5227-44DD-8A48-EFE94BC3BA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Bootstrapper", "src\Bootstrapper\UPDCFacilityManager.Bootstrapper\UPDCFacilityManager.Bootstrapper.csproj", "{36D2CA8D-9CB2-4989-9214-1A3DFD1C6FA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{10E2FEC4-6457-48D8-BB28-98C8386C9C98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Residence", "Residence", "{FBF7D375-A6AE-431F-965E-4168E7AC6C7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{3901683A-F213-40F9-8BD4-9FDA9084F8D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Auth", "src\Modules\Auth\UPDCFacilityManager.Modules.Auth\UPDCFacilityManager.Modules.Auth.csproj", "{764C2A27-81CA-454C-8FAF-3FFA98C36ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Residence", "src\Modules\Residence\UPDCFacilityManager.Modules.Residence\UPDCFacilityManager.Modules.Residence.csproj", "{849C47D2-C1F0-4F51-8D04-541EB8047BD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Report", "src\Modules\Report\UPDCFacilityManager.Modules.Report\UPDCFacilityManager.Modules.Report.csproj", "{7D8CF453-2A36-465A-8661-B3083331EA66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Shared.Infrastructure", "src\Shared\UPDCFacilityManager.Shared.Infrastructure\UPDCFacilityManager.Shared.Infrastructure.csproj", "{753B4A08-C897-4695-9E5F-3AF5DE625EAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Shared.Models", "shared\UPDCFacilityManager.Shared.Models\UPDCFacilityManager.Shared.Models.csproj", "{8FB49A9A-5B43-4401-AB2E-3449814181DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36D2CA8D-9CB2-4989-9214-1A3DFD1C6FA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D2CA8D-9CB2-4989-9214-1A3DFD1C6FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D2CA8D-9CB2-4989-9214-1A3DFD1C6FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D2CA8D-9CB2-4989-9214-1A3DFD1C6FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{764C2A27-81CA-454C-8FAF-3FFA98C36ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764C2A27-81CA-454C-8FAF-3FFA98C36ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764C2A27-81CA-454C-8FAF-3FFA98C36ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764C2A27-81CA-454C-8FAF-3FFA98C36ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849C47D2-C1F0-4F51-8D04-541EB8047BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849C47D2-C1F0-4F51-8D04-541EB8047BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849C47D2-C1F0-4F51-8D04-541EB8047BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849C47D2-C1F0-4F51-8D04-541EB8047BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D8CF453-2A36-465A-8661-B3083331EA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8CF453-2A36-465A-8661-B3083331EA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D8CF453-2A36-465A-8661-B3083331EA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D8CF453-2A36-465A-8661-B3083331EA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753B4A08-C897-4695-9E5F-3AF5DE625EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753B4A08-C897-4695-9E5F-3AF5DE625EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753B4A08-C897-4695-9E5F-3AF5DE625EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753B4A08-C897-4695-9E5F-3AF5DE625EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB49A9A-5B43-4401-AB2E-3449814181DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FB49A9A-5B43-4401-AB2E-3449814181DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FB49A9A-5B43-4401-AB2E-3449814181DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FB49A9A-5B43-4401-AB2E-3449814181DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{136A9E89-DDB9-45CB-879D-9DDD2F585659} = {168BBA54-2EA2-44CE-8C8C-B8CF2134F1FC}
+		{2400F800-30DB-4A0B-882D-2DD60946D660} = {168BBA54-2EA2-44CE-8C8C-B8CF2134F1FC}
+		{1DA7A3DB-5227-44DD-8A48-EFE94BC3BA87} = {168BBA54-2EA2-44CE-8C8C-B8CF2134F1FC}
+		{36D2CA8D-9CB2-4989-9214-1A3DFD1C6FA5} = {136A9E89-DDB9-45CB-879D-9DDD2F585659}
+		{10E2FEC4-6457-48D8-BB28-98C8386C9C98} = {2400F800-30DB-4A0B-882D-2DD60946D660}
+		{FBF7D375-A6AE-431F-965E-4168E7AC6C7E} = {2400F800-30DB-4A0B-882D-2DD60946D660}
+		{3901683A-F213-40F9-8BD4-9FDA9084F8D6} = {2400F800-30DB-4A0B-882D-2DD60946D660}
+		{764C2A27-81CA-454C-8FAF-3FFA98C36ABB} = {10E2FEC4-6457-48D8-BB28-98C8386C9C98}
+		{849C47D2-C1F0-4F51-8D04-541EB8047BD9} = {FBF7D375-A6AE-431F-965E-4168E7AC6C7E}
+		{7D8CF453-2A36-465A-8661-B3083331EA66} = {3901683A-F213-40F9-8BD4-9FDA9084F8D6}
+		{753B4A08-C897-4695-9E5F-3AF5DE625EAC} = {1DA7A3DB-5227-44DD-8A48-EFE94BC3BA87}
+		{8FB49A9A-5B43-4401-AB2E-3449814181DF} = {1DA7A3DB-5227-44DD-8A48-EFE94BC3BA87}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09F7B485-146E-4C5A-8F75-D62393C9511E}
+	EndGlobalSection
+EndGlobal

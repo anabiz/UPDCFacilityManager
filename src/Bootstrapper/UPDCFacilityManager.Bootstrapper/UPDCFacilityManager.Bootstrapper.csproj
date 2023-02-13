@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Auth\UPDCFacilityManager.Modules.Auth\UPDCFacilityManager.Modules.Auth.csproj" />
+    <ProjectReference Include="..\..\Modules\Report\UPDCFacilityManager.Modules.Report\UPDCFacilityManager.Modules.Report.csproj" />
+    <ProjectReference Include="..\..\Modules\Residence\UPDCFacilityManager.Modules.Residence\UPDCFacilityManager.Modules.Residence.csproj" />
+    <ProjectReference Include="..\..\Shared\UPDCFacilityManager.Shared.Infrastructure\UPDCFacilityManager.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
+  </ItemGroup>
+
+</Project>

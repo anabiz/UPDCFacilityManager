@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\shared\UPDCFacilityManager.Shared.Models\UPDCFacilityManager.Shared.Models.csproj" />
+    <ProjectReference Include="..\..\..\Shared\UPDCFacilityManager.Shared.Infrastructure\UPDCFacilityManager.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
