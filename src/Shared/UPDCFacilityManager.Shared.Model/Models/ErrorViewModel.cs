@@ -1,4 +1,4 @@
-namespace UPDCFacilityManager.Bootstrapper.Models
+namespace UPDCFacilityManager.Shared.Models
 {
     public class ErrorViewModel
     {
