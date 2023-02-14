@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-using UPDCFacilityManager.Bootstrapper.Models;
+using UPDCFacilityManager.Shared.Models;
 
-namespace UPDCFacilityManager.Bootstrapper.Controllers
+namespace UPDCFacilityManager.Modules.Auth.Controllers
 {
     public class AuthController : Controller
     {

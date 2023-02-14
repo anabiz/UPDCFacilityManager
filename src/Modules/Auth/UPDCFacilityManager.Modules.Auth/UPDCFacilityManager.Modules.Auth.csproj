@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\shared\UPDCFacilityManager.Shared.Models\UPDCFacilityManager.Shared.Models.csproj" />
     <ProjectReference Include="..\..\..\Shared\UPDCFacilityManager.Shared.Infrastructure\UPDCFacilityManager.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\shared\UPDCFacilityManager.Shared.Model\UPDCFacilityManager.Shared.Model.csproj" />
   </ItemGroup>
 
 </Project>
