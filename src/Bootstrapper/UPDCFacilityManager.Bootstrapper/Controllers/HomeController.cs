@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using UPDCFacilityManager.Shared.Models;
 
-namespace UPDCFacilityManager.Modules.Residence.Controllers
+namespace UPDCFacilityManager.Bootstrapper.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,6 +15,10 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Login()
         {
             return View();
         }
