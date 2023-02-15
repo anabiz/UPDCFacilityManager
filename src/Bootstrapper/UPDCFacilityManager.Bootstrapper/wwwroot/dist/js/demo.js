@@ -1,10 +1,25 @@
-(function ($) {
-  'use strict'
+console.log("hello woriiiii")
 
+document.getElementById('test').onclick(() => {
+    alert("hello world");
+    console.log("hello wor")
+})
+
+document.querySelectorAll('#test').forEach(e => {
+    e.addEventListener('click', (event) => {
+        consoile.log(event)
+        if (!event.path[0].classList.contains('close-team')) {
+            console.log(event.path[0].classList)
+            e.classList.add('active');
+            console.log(event.path[0])
+
+        }
+    })
+});
 
   // Color Arrays
 
-  var navbar_dark_skins = [
+const navbar_dark_skins = [
     'navbar-primary',
     'navbar-secondary',
     'navbar-info',
@@ -22,14 +37,14 @@
     'navbar-gray'
   ]
 
-  var navbar_light_skins = [
+const navbar_light_skins = [
     'navbar-light',
     'navbar-warning',
     'navbar-white',
     'navbar-orange'
   ]
 
-  var sidebar_colors = [
+const sidebar_colors = [
     'bg-primary',
     'bg-warning',
     'bg-info',
@@ -48,7 +63,7 @@
     'bg-olive'
   ]
 
-  var accent_colors = [
+  const accent_colors = [
     'accent-primary',
     'accent-warning',
     'accent-info',
@@ -67,7 +82,7 @@
     'accent-olive'
   ]
 
-  var sidebar_skins = [
+const sidebar_skins = [
     'sidebar-dark-primary',
     'sidebar-dark-warning',
     'sidebar-dark-info',
@@ -101,6 +116,3 @@
     'sidebar-light-teal',
     'sidebar-light-olive'
   ]
-
- 
-})(jQuery)
