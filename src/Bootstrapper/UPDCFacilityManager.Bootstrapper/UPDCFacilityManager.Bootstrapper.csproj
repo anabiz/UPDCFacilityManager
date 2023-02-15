@@ -14,4 +14,8 @@
     <ProjectReference Include="..\..\shared\UPDCFacilityManager.Shared.Model\UPDCFacilityManager.Shared.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
