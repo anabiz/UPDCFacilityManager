@@ -1,13 +1,13 @@
-using UPDCFacilityManager.Shared.Infrastructure;
+using UPDCFacilityManager.Modules.Auth.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddResidenceModule(builder.Configuration);
-builder.Services.AddAuthModule(builder.Configuration);
-builder.Services.AddReportModule(builder.Configuration);
+builder.Services.AddAuthConfiguration(builder.Configuration);
+builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-//builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication();
+
 
 var app = builder.Build();
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UPDCFacilityManager.Modules.Auth.Core.ViewModels
 {
-    public class Register
+    public class RegisterViewModel
     {
         [Required]
         [EmailAddress]

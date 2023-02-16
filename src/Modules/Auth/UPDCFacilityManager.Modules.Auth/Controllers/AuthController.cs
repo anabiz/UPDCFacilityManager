@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
@@ -9,29 +11,57 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
     public class AuthController : Controller
     {
         private readonly ILogger<AuthController> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IMapper _mapper;
 
-        public AuthController(ILogger<AuthController> logger)
+        public AuthController(
+            ILogger<AuthController> logger,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            IMapper mapper
+            )
         {
             _logger = logger;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult Register(Register model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var user =  _mapper.Map<IdentityUser>(model);
+                user.UserName = model.Email;
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(model);
         }
- 
+
         [HttpPost]
-        public IActionResult Login(Login model)
+        public IActionResult Login(LoginViewModel model)
         {
             return View();
         }
