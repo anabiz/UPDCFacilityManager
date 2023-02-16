@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
 using UPDCFacilityManager.Shared.Models;
 
 namespace UPDCFacilityManager.Modules.Auth.Controllers
@@ -15,6 +16,22 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Register(Register model)
+        {
+            return View();
+        }
+ 
+        [HttpPost]
+        public IActionResult Login(Login model)
         {
             return View();
         }
