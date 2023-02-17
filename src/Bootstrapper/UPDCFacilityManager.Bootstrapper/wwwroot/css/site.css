@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.brand-login-logo {
+    transition: width 0.3s ease-in-out;
+    width: 40px;
+    z-index: 1035;
+}

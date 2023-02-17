@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UPDCFacilityManager.Modules.Auth.Core.ViewModels
 {
-    public class Login
+    public class LoginViewModel
     {
         [Required]
         [EmailAddress]
@@ -13,5 +13,10 @@ namespace UPDCFacilityManager.Modules.Auth.Core.ViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+
+        [Required]
+        [Display(Name = "Remember me")]
+        public Boolean RememberMe { get; set; }
     }
 }
