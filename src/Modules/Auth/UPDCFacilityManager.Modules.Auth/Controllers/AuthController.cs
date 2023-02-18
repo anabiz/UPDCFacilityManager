@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
 using UPDCFacilityManager.Shared.Models;
 
@@ -12,14 +13,14 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
     public class AuthController : Controller
     {
         private readonly ILogger<AuthController> _logger;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IMapper _mapper;
 
         public AuthController(
             ILogger<AuthController> logger,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
             IMapper mapper
             )
         {
@@ -50,7 +51,7 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user =  _mapper.Map<IdentityUser>(model);
+                var user =  _mapper.Map<AppUser>(model);
                 user.UserName = model.Email;
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
