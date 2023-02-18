@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -27,7 +28,8 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
             _signInManager = signInManager;
             _mapper = mapper;
         }
-
+        
+        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -35,6 +37,10 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
 
         [HttpGet]
         public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult Login()
         {
             return View();
         }
@@ -68,11 +74,18 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if(result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Estate");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt");
             }
-            return View("~/Views/Home/Login.cshtml", model);
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login");
         }
 
 
