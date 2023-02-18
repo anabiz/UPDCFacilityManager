@@ -13,22 +13,15 @@ namespace UPDCFacilityManager.Module.Estate.Controllers
 {
     public class EstateController : Controller
     {
-
         private readonly ILogger<EstateController> _logger;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IMapper _mapper;
 
         public EstateController(
             ILogger<EstateController> logger,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
             IMapper mapper
             )
         {
             _logger = logger;
-            _userManager = userManager;
-            _signInManager = signInManager;
             _mapper = mapper;
         }
 

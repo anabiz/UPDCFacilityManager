@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UPDCFacilityManager.Modules.Auth.Core.Data;
+using UPDCFacilityManager.Modules.Auth.Core.Entities;
+using UPDCFacilityManager.Modules.Auth.Core.Repositories;
+using UPDCFacilityManager.Modules.Auth.Core.Services;
 
 namespace UPDCFacilityManager.Modules.Auth.Core
 {
@@ -13,9 +16,12 @@ namespace UPDCFacilityManager.Modules.Auth.Core
             services.AddDbContext<AppDbContext>(options =>
               options.UseSqlServer(config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }
