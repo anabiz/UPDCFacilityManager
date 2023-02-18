@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
 using UPDCFacilityManager.Shared.Models;
 
 namespace UPDCFacilityManager.Modules.Auth.Controllers
@@ -8,15 +12,80 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
     public class AuthController : Controller
     {
         private readonly ILogger<AuthController> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IMapper _mapper;
 
-        public AuthController(ILogger<AuthController> logger)
+        public AuthController(
+            ILogger<AuthController> logger,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            IMapper mapper
+            )
         {
             _logger = logger;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _mapper = mapper;
         }
-
+        
+        [Authorize]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user =  _mapper.Map<IdentityUser>(model);
+                user.UserName = model.Email;
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Estate");
+                }
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login");
         }
 
 
