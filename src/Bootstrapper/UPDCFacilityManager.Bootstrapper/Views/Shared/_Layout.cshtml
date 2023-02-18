@@ -1,4 +1,5 @@
-﻿@inject SignInManager<IdentityUser> signInManager;
+﻿@using Newtonsoft.Json
+@inject SignInManager<IdentityUser> signInManager;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -181,7 +182,7 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Estate"?"active":"")">
                             <a asp-controller="Estate" asp-action="Index" class="nav-link">
                                 <p>
                                     <i class="bi bi-speedometer"></i> &nbsp;
@@ -189,7 +190,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Auth"?"active":"")">
                             <a asp-controller="Auth" asp-action="index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -200,27 +201,27 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a asp-controller="Users" asp-action="ComingSoon" class="nav-link">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Residence"?"active":"")">
+                            <a asp-controller="Residence" asp-action="Index" class="nav-link">
                                 <p>
                                     <i class="bi bi-bar-chart-line-fill"></i> &nbsp;
-                                    Charts
+                                    Residence
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-controller="Users" asp-action="ComingSoon" class="nav-link">
-                                <p>
-                                    <i class="bi bi-table"></i> &nbsp;
-                                    Tables
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Transaction"?"active":"")">
                             <a asp-controller="Users" asp-action="ComingSoon" class="nav-link">
                                 <p>
                                     <i class="bi bi-credit-card-2-back-fill"></i> &nbsp;
                                     Transaction
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["controller"]?.ToString() == "Tables"?"active":"")">
+                            <a asp-controller="Users" asp-action="ComingSoon" class="nav-link">
+                                <p>
+                                    <i class="bi bi-table"></i> &nbsp;
+                                    Tables
                                 </p>
                             </a>
                         </li>
