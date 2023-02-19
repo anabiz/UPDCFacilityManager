@@ -70,7 +70,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Repositories
             return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public virtual async Task<TEntity> GetByIdAsync(Guid id)
+        public virtual async Task<TEntity> GetByIdAsync(string id)
         {
             var entity = await _context.Set<TEntity>().FindAsync(id);
 

@@ -4,7 +4,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetByIdAsync(Guid id);
+        Task<TEntity> GetByIdAsync(string id);
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
         bool Exists(Expression<Func<TEntity, bool>> predicate);

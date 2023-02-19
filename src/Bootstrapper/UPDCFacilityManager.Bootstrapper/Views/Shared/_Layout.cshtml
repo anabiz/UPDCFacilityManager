@@ -21,6 +21,33 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
+    <script type="text/javascript">
+        $(function () {
+            $("body").on('click', '#btnEdit', function () {
+                $("#MyPopup").modal("hide");
+                const id = $(this).attr('data-id');
+                console.log(id)
+                $.ajax({
+                    url: `Edit/${id}`,
+                    //data: JSON.stringify(obj),
+                    type: 'GET',
+                    dataType: 'html',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        console.log(response);
+                        var id = JSON.parse(response).Id;
+                        var name = JSON.parse(response).FirstName;
+                        var country = JSON.parse(response).LastName;
+                        $('#txtId').val(id);
+                        $('#txtName').val(name);
+                        $('#txtCountry').val(country);
+                        $("#MyPopup").modal("show");
+                    }
+                });
+            });
+        });
+    </script>
+
 </head>
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
@@ -42,28 +69,6 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -157,26 +162,15 @@
               
             </ul>
         </nav>
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar elevation-4" >
             <!-- Brand Logo -->
             <a asp-action="Index" asp-controller="Auth" class="brand-link">
                 <img src="../../dist/img/custodian-logo.png" alt="Residence Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">UPDC Facility Manager</span>
+                <span class="brand-text">UPDC Facility Manager</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -244,9 +238,7 @@
         </aside>
         <div class="content-wrapper">
             <section class="content">
-                <div class="card">
-                    @RenderBody()
-                </div>
+               @RenderBody()
             </section>
         </div>
         <!-- /.content-wrapper -->

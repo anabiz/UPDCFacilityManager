@@ -1,45 +1,20 @@
-﻿@{
+﻿@model List<UserViewModel>
+@{
     ViewData["Title"] = "Users List";
 }
+
 <div class="container">
     <div class="form-outline mt-4 mb-4 w-75">
         <input type="search" id="form1" class="form-control" placeholder="Search Estate" aria-label="Search" />
     </div>
   <div class="row overflow-auto">
-      <div class="col-md-3">
-        <div class="card elevation-1">
-            <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
-                <div class="w-75 text-center">
-                    <h3>Heading</h3>
-                </div>
-                <div class="dropstart w-25">
-                    <a  role="button"
-                        id="dropdownmenu"
-                        data-toggle="dropdown">
-                        <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
-                        <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                        <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
-                        <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
-                    </ul>
-                </div>
-            </div>
-          
-            <div class="card-body mp-0">
-               <h5 class="card-title">Special title treatment</h5>
-               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-        </div>    
-      </div>
-        <div class="col-md-3">
+       @foreach (var user in Model)
+        {
+         <div class="col-md-3 mb-3 d-flex align-items-stretch">
             <div class="card elevation-1">
                 <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
                     <div class="w-75 text-center">
-                        <h3>Heading</h3>
+                        <h3>@user.FirstName</h3>
                     </div>
                     <div class="dropstart w-25">
                         <a role="button"
@@ -49,168 +24,23 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
                             <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
+                            <li><a class="dropdown-item" href="#" id="btnEdit" data-id="@user.Id"> <i class="bi bi-person-fill"></i>Edit</a></li>
                             <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
                         </ul>
                     </div>
                 </div>
-
                 <div class="card-body mp-0">
                     <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">@user.Email </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <small class="text-muted">@user.UpdatedAt</small>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card elevation-1">
-                <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
-                    <div class="w-75 text-center">
-                        <h3>Heading</h3>
-                    </div>
-                    <div class="dropstart w-25">
-                        <a role="button"
-                           id="dropdownmenu"
-                           data-toggle="dropdown">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card-body mp-0">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card elevation-1">
-                <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
-                    <div class="w-75 text-center">
-                        <h3>Heading</h3>
-                    </div>
-                    <div class="dropstart w-25">
-                        <a role="button"
-                           id="dropdownmenu"
-                           data-toggle="dropdown">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card-body mp-0">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card elevation-1">
-                <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
-                    <div class="w-75 text-center">
-                        <h3>Heading</h3>
-                    </div>
-                    <div class="dropstart w-25">
-                        <a role="button"
-                           id="dropdownmenu"
-                           data-toggle="dropdown">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card-body mp-0">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card elevation-1">
-                <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
-                    <div class="w-75 text-center">
-                        <h3>Heading</h3>
-                    </div>
-                    <div class="dropstart w-25">
-                        <a role="button"
-                           id="dropdownmenu"
-                           data-toggle="dropdown">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card-body mp-0">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card elevation-1">
-                <div class="mb-0 text-right mr-2 mt-2 d-flex flex-row">
-                    <div class="w-75 text-center">
-                        <h3>Heading</h3>
-                    </div>
-                    <div class="dropstart w-25">
-                        <a role="button"
-                           id="dropdownmenu"
-                           data-toggle="dropdown">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownmenu">
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>View</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-person-fill"></i>Delete</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card-body mp-0">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
+         </div>
+        }
         
-        <div class="col-md-3" style="min-height:70px">
+        <div class="col-md-3 mb-3 d-flex align-items-stretch"">
             <div class="card elevation-1 text-center">
                 <div type="button" class="btn text-center d-flex flex-column" data-toggle="modal" data-target="#exampleModal">
                     New Estate
@@ -251,6 +81,47 @@
             </div>
         </div>
     </div>
+
+    <div id="MyPopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">Customer Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form asp-action="Update" asp-controller="Home" method="post">
+                                    <div class="form-group">
+                                        Id: <input id="txtId" class="form-control" readonly="readonly" />
+                                    </div>
+                                    <div class="form-group">
+                                        Name: <input id="txtName"  class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        LasName: <input id="txtCountry" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Update" class="btn btn-success btn-sm" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" id="btnClosePopup" value="Close" data-dismiss="modal" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
 
