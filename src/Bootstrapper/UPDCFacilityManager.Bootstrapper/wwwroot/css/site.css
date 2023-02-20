@@ -29,6 +29,14 @@ body {
 }
 
 .active {
-    background-color: #9381FF;
-    color: white;
+    background-color: #F8F7FF;
+    color: #9381FF;
+    border-radius: 0.4rem;
+}
+.nav-text {
+    color: #F8F7FF;
+}
+
+a {
+    text-decoration: none;
 }

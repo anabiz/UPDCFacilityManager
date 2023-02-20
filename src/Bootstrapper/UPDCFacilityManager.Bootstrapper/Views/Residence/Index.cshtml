@@ -3,6 +3,24 @@
 }
 
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Residence</h1>
+<div class="container justify-content-center p-5">
+    <div class="row">
+        <div class="text-center col-sm-3 align-items-stretch p-4 mr-3 elevation-2" style="background-color: #FFD8BE;">
+            <a asp-action="Create" asp-controller="Residence">
+                <img src="~/images/add-resident.png" />
+                <div class="text-center p-2">
+                    <h5 style="color:black">ADD RESIDENT</h5>
+                </div>
+            </a>
+        </div>
+        <div class="text-center col-sm-3 align-items-stretch p-4 ml-3 elevation-2" style="background-color: #FFD8BE;">
+            <a asp-action="Details" asp-controller="Residence">
+                <img src="~/images/view-resident.png" />
+                <div class="text-center p-2">
+                    <h5 style="color:black">VIEW RESIDENT</h5>
+                </div>
+            </a>
+        </div>
+     
+    </div>
 </div>
