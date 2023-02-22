@@ -22,7 +22,7 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
             IClusterService clusterService,
             IMapper mapper,
             AppDbContext appDbContext
-            )
+            ) 
         {
             _logger = logger;
             _clusterService = clusterService;

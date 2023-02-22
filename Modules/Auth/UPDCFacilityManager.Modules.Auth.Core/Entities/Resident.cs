@@ -16,8 +16,8 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Entities
             PhoneNumbers = new HashSet<Phone>();
         }
         public string Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public string UnitId { get; set; }
         public string EstateId { get; set; }
         public Unit Unit { get; set; }
