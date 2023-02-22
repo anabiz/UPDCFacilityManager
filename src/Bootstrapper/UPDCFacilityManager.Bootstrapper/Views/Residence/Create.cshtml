@@ -39,6 +39,7 @@
                         <label asp-for="CrusterId" class="control-label">Cluster (Region)</label>
                         <select 
                             asp-for="CrusterId"
+                            id="cluster"
                             class="form-select"
                             asp-items="@(new SelectList(ViewBag.ClusterList,"Value", "Text"))"
                         >
@@ -52,15 +53,17 @@
                         <label asp-for="EstateId" class="control-label">Site (Estate)</label>
                         <select asp-for="EstateId"
                                 class="form-select"
-                                asp-items="@(new SelectList(ViewBag.ClusterList,"Value", "Text"))">
+                                id="estate"
+                        >
                         </select>                        
                         <span asp-validation-for="EstateId" class="text-danger"></span>
                     </div>
                     <div class="col mt-2">
                         <label asp-for="UnitId" class="control-label">Unit No.</label>
                         <select asp-for="UnitId"
+                                id="unit"
                                 class="form-select"
-                                asp-items="@(new SelectList(ViewBag.ClusterList,"Value", "Text"))">
+                        >
                         </select>                        
                         <span asp-validation-for="UnitId" class="text-danger"></span>
                     </div>
@@ -69,9 +72,9 @@
                 
             <div class="pt-1 mt-2 mb-2 mr-5 text-right">
                 <a asp-action="index" class="btn w-25" style="border:1px solid #FF0000; color:#FF0000;">
-                    Back
+                    Cancel
                 </a>
-                <input type="submit" value="Submit" class="btn w-25" style="background-color: #9381FF; color:#fff" />
+                <input type="submit" value="Add" class="btn w-25" style="background-color: #9381FF; color:#fff" />
             </div>
             
             </form>

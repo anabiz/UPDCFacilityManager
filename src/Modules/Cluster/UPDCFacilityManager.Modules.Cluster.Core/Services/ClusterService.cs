@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using UPDCFacilityManager.Modules.Auth.Core.Data;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Cluster.Core.Repositories;
 using UPDCFacilityManager.Modules.Cluster.Core.ViewModels;
