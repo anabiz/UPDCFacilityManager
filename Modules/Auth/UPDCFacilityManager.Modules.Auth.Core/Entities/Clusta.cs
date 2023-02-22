@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace UPDCFacilityManager.Modules.Auth.Core.Entities
 {
-    public class Estate
+    public class Clusta
     {
-        public Estate() 
+        public Clusta()
         {
-            Units= new HashSet<Unit>();
+            Estates = new HashSet<Estate>();
         }
         public string Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
-        public string ClusterId { get; set; }
-        public Clusta Cluster { get; set; }
-        public ICollection<Unit> Units { get; set; }
+        public ICollection<Estate> Estates { get; set; }
     }
 }
+    
+

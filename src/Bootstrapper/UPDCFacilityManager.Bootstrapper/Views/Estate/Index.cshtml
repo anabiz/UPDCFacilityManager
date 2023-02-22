@@ -1,25 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Estates";
 }
-<div class="container p-4">
+<div class="container justify-content-center p-5 pt-3">
     <div class="row">
-        <div class="col-sm-4 align-items-stretch">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+         <div class="text-center col-sm-3 align-items-stretch p-4 mr-3 elevation-2" style="background-color: #FFD8BE;">
+            <a asp-action="Details" asp-controller="Estate">
+                <img src="~/images/cluster-icon.png" />
+                <div class="text-center p-2">
+                    <h5 style="color:black">YABA</h5>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col-sm-4 align-items-stretch">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="text-center col-sm-3 align-items-stretch p-4 mr-3 elevation-2" style="background-color: #FFD8BE;">
+            <a asp-action="Details" asp-controller="Estate">
+                <img src="~/images/cluster-icon.png" />
+                <div class="text-center p-2">
+                    <h5 style="color:black">LEKKI</h5>
                 </div>
-            </div>
+            </a>
         </div>
+        <div class="text-center col-sm-3 align-items-stretch p-4 elevation-2" style="background-color: #FFD8BE;">
+            <a asp-action="Create" asp-controller="Estate">
+                <img src="~/images/add-cluster-icon.png" />
+                <div class="text-center p-2">
+                    <h5 style="color:black">ADD CLUSTER</h5>
+                </div>
+            </a>
+        </div>
+
     </div>
 </div>

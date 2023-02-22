@@ -80,7 +80,7 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if(result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Estate");
+                    return RedirectToAction("Index", "Residence");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt");
             }

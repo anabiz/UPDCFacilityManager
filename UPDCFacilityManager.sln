@@ -39,7 +39,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estate", "Estate", "{4AFC04
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPDCFacilityManager.Module.Estate", "src\Modules\Estate\UPDCFacilityManager.Module.Estate\UPDCFacilityManager.Module.Estate.csproj", "{5EA7E130-B825-4A9A-B8BF-5CB7F8F531C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Residence.Core", "src\Modules\Residence\UPDCFacilityManager.Modules.Residence.Core\UPDCFacilityManager.Modules.Residence.Core.csproj", "{67720CA0-BFD0-445A-90BD-0842D05ABBD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPDCFacilityManager.Modules.Residence.Core", "src\Modules\Residence\UPDCFacilityManager.Modules.Residence.Core\UPDCFacilityManager.Modules.Residence.Core.csproj", "{67720CA0-BFD0-445A-90BD-0842D05ABBD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cluster", "Cluster", "{0B2C5071-FD8D-40BE-9B5D-8F9F2A81AD2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Cluster", "src\Modules\Cluster\UPDCFacilityManager.Modules.Cluster\UPDCFacilityManager.Modules.Cluster.csproj", "{DCFB92DE-9CBB-4DB5-AF1E-FE6E7356BFA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Cluster.Core", "src\Modules\Cluster\UPDCFacilityManager.Modules.Cluster.Core\UPDCFacilityManager.Modules.Cluster.Core.csproj", "{296BEE5C-0277-45A3-A4E1-F284BC867F4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDCFacilityManager.Modules.Estates.Core", "..\UPDCFacilityManagersrc\Modules\Esatate\UPDCFacilityManager.Modules.Estates.Core\UPDCFacilityManager.Modules.Estates.Core.csproj", "{078AE2DB-6D56-4F70-A1B6-B23DB5C49086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +95,18 @@ Global
 		{67720CA0-BFD0-445A-90BD-0842D05ABBD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67720CA0-BFD0-445A-90BD-0842D05ABBD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67720CA0-BFD0-445A-90BD-0842D05ABBD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCFB92DE-9CBB-4DB5-AF1E-FE6E7356BFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCFB92DE-9CBB-4DB5-AF1E-FE6E7356BFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCFB92DE-9CBB-4DB5-AF1E-FE6E7356BFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCFB92DE-9CBB-4DB5-AF1E-FE6E7356BFA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296BEE5C-0277-45A3-A4E1-F284BC867F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296BEE5C-0277-45A3-A4E1-F284BC867F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296BEE5C-0277-45A3-A4E1-F284BC867F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296BEE5C-0277-45A3-A4E1-F284BC867F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{078AE2DB-6D56-4F70-A1B6-B23DB5C49086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{078AE2DB-6D56-4F70-A1B6-B23DB5C49086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{078AE2DB-6D56-4F70-A1B6-B23DB5C49086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{078AE2DB-6D56-4F70-A1B6-B23DB5C49086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +129,10 @@ Global
 		{4AFC04D6-608B-4467-8AC9-2592C54910B8} = {2400F800-30DB-4A0B-882D-2DD60946D660}
 		{5EA7E130-B825-4A9A-B8BF-5CB7F8F531C3} = {4AFC04D6-608B-4467-8AC9-2592C54910B8}
 		{67720CA0-BFD0-445A-90BD-0842D05ABBD8} = {FBF7D375-A6AE-431F-965E-4168E7AC6C7E}
+		{0B2C5071-FD8D-40BE-9B5D-8F9F2A81AD2E} = {2400F800-30DB-4A0B-882D-2DD60946D660}
+		{DCFB92DE-9CBB-4DB5-AF1E-FE6E7356BFA9} = {0B2C5071-FD8D-40BE-9B5D-8F9F2A81AD2E}
+		{296BEE5C-0277-45A3-A4E1-F284BC867F4B} = {0B2C5071-FD8D-40BE-9B5D-8F9F2A81AD2E}
+		{078AE2DB-6D56-4F70-A1B6-B23DB5C49086} = {4AFC04D6-608B-4467-8AC9-2592C54910B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09F7B485-146E-4C5A-8F75-D62393C9511E}

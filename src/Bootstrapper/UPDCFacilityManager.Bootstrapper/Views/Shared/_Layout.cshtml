@@ -61,10 +61,15 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-controller="Residence" asp-action="index" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <div class="input-group pl-4" style="color:#9381FF">
+                        <h4 class="mr-3 mt-1">Resident</h4>
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div >
+                            <button class="btn" type="button" style="border:1px solid">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
                 </li>
             </ul>
 
@@ -216,11 +221,11 @@
                 </nav>
                 @if (signInManager.IsSignedIn(User))
                 {
-                    <div style="position:absolute; bottom:4%">
+                    <div style="position:absolute; bottom:4%; left: 25%">
                         <form method="post" asp-action="Logout" asp-controller="Auth">
-                            <button type="submit" class="nav-link btn btn-link py-0 text-left" >
-                                <p class="" style="color: #F8F7FF">
-                                    <i class="bi bi-box-arrow-left"></i> &nbsp;
+                            <button type="submit" class="btn text-center" style="border: 1px solid #F8F7FF; width:8rem;padding-top:1rem">
+                                <p class="" style="color: #F8F7FF;" >
+                                    <img src="~/images/logout-icon.png" style="width:1.2rem"  /> &nbsp;
                                     Logout
                                 </p>
                             </button>

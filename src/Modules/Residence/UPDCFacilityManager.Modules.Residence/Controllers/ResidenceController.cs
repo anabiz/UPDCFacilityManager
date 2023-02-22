@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Auth.Core.Services;
+using UPDCFacilityManager.Modules.Cluster.Core.Services;
 using UPDCFacilityManager.Modules.Residence.Core.ViewModels;
 using UPDCFacilityManager.Shared.Models;
 
@@ -15,27 +16,45 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
     {
         private readonly ILogger<ResidenceController> _logger;
         private readonly IResidentService _residentService;
+        private readonly IClusterService _clusterService;
         private readonly IMapper _mapper;
         public ResidenceController(
             ILogger<ResidenceController> logger,
             IResidentService residentService,
+             IClusterService clusterService,
             IMapper mapper
             )
         {
             _logger = logger;
             _residentService = residentService;
-            _mapper = mapper;
+            _clusterService = clusterService;
+           _mapper = mapper;
         }
 
         public IActionResult Index()
         {
+
             return View();
         }
         [HttpGet]
-        public IActionResult Create()
+        public async  Task<IActionResult> Create()
         {
+            var clusters = await _clusterService.BrowseAsync();
+            var listItems = clusters.Select(x => new
+            {
+                Value = x.Id,
+                Text = x.Name,
+            }).ToList();
+
+            listItems.Insert(0, new
+            {
+                Value = "",
+                Text = ""
+            });
+            ViewBag.ClusterList = listItems;
             return View();
         }
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create(CreateResidentViewModel model)
