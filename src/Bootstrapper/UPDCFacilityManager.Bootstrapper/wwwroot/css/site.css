@@ -40,3 +40,8 @@ body {
 a {
     text-decoration: none;
 }
+
+.all-button {
+    background-color: #9381FF;
+    color: #fff
+}

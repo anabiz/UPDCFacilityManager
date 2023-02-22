@@ -1,5 +1,61 @@
-﻿
-<h1>Add Resisent</h1>
-<div>
+﻿@model CreateResidentViewModel
 
+@section Scripts{
+    <script src="~/js/residence.js"></script>
+}
+<!-- MultiStep Form -->
+<div class="container" style="margin:0 auto">
+    <div class="d-flex align-items-center w-75 pt-4" style="margin: 0 auto;">
+        <form  asp-action="Create" asp-controller="Residence" method="post"  id="msform" style="margin: 0 auto;width:100%;">
+            <div style="margin-top:2rem; margin: 0 auto; width:85%; border:1px solid #D9D9D9; padding:0rem 2rem 1rem 2rem">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h3>Add Resident</h3>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="FirstName" class="control-label">First name</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="LastName" class="control-label">Last name</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group form-outline">
+                    <label asp-for="FirstEmail" class="control-label">Email Address</label>
+                    <input asp-for="FirstEmail" class="form-control" />
+                    <span asp-validation-for="FirstEmail" class="text-danger"></span>
+                </div>
+                <div class="form-group form-outline">
+                    <label asp-for="FirstPhone" class="control-label">Phone Number</label>
+                    <input asp-for="FirstPhone" class="form-control" />
+                    <span asp-validation-for="FirstPhone" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="EstateId" class="control-label">Estate</label>
+                        <input asp-for="EstateId" class="form-control" />
+                        <span asp-validation-for="EstateId" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="UnitId" class="control-label">Unit No.</label>
+                        <input asp-for="UnitId" class="form-control" />
+                        <span asp-validation-for="UnitId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="pt-1 mt-2 mb-2 mr-5 text-right">
+                  <a asp-action="index" class="btn btn-lg w-25" style="background-color: #9381FF; color:#fff">
+                    Back
+                </a>
+                <input type="submit" value="Submit" class="btn btn-lg w-25" style="background-color: #9381FF; color:#fff" />
+            </div>
+            
+            </form>
+
+     </div>
 </div>
+
