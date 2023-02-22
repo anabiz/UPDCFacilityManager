@@ -13,30 +13,30 @@
                 <h3>Add Resident</h3>
                 <div class="row">
                     <div class="col">
-                        <label asp-for="FirstName" class="control-label">First name</label>
+                        <label asp-for="FirstName" class="control-label mb-0">First name</label>
                         <input asp-for="FirstName" class="form-control" />
                         <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
                     <div class="col">
-                        <label asp-for="LastName" class="control-label">Last name</label>
+                        <label asp-for="LastName" class="control-label mb-0">Last name</label>
                         <input asp-for="LastName" class="form-control" />
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group form-outline mt-2">
-                    <label asp-for="FirstEmail" class="control-label">Email Address</label>
+                    <label asp-for="FirstEmail" class="control-label mb-0">Email Address</label>
                     <input asp-for="FirstEmail" class="form-control" />
                     <span asp-validation-for="FirstEmail" class="text-danger"></span>
                 </div>
              
                 <div class="row">
                     <div class="col">
-                        <label asp-for="FirstPhone" class="control-label">Phone No.</label>
+                        <label asp-for="FirstPhone" class="control-label mb-0">Phone No.</label>
                         <input asp-for="FirstPhone" class="form-control" />
                         <span asp-validation-for="FirstPhone" class="text-danger"></span>
                     </div>
                     <div class="col">
-                        <label asp-for="CrusterId" class="control-label">Cluster (Region)</label>
+                        <label asp-for="CrusterId" class="control-label mb-0">Cluster (Region)</label>
                         <select 
                             asp-for="CrusterId"
                             id="cluster"
@@ -50,7 +50,7 @@
 
                 <div class="row">
                     <div class="col mt-2">
-                        <label asp-for="EstateId" class="control-label">Site (Estate)</label>
+                        <label asp-for="EstateId" class="control-label mb-0">Site (Estate)</label>
                         <select asp-for="EstateId"
                                 class="form-select"
                                 id="estate"
@@ -59,7 +59,7 @@
                         <span asp-validation-for="EstateId" class="text-danger"></span>
                     </div>
                     <div class="col mt-2">
-                        <label asp-for="UnitId" class="control-label">Unit No.</label>
+                        <label asp-for="UnitId" class="control-label mb-0">Unit No.</label>
                         <select asp-for="UnitId"
                                 id="unit"
                                 class="form-select"
