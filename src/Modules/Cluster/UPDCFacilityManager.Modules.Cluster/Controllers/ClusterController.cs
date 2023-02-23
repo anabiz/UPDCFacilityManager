@@ -30,12 +30,13 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
             _appDbContext = appDbContext;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpGet]
+        [Authorize,HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -49,6 +50,8 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
             await _clusterService.CreateAsync(model);
             return View("index");
         }
+
+        [Authorize, HttpGet]
         public IActionResult Details()
         {
             return View();

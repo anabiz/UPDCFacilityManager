@@ -63,7 +63,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Services
 
         }
 
-        public Task UpdateAsync(UpdateResidenceViewModel model)
+        public Task UpdateAsync(UpdateResidentViewModel model)
         {
             throw new NotImplementedException();
         }

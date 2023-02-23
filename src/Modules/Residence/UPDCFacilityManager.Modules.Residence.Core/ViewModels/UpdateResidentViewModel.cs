@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UPDCFacilityManager.Modules.Residence.Core.ViewModels
 {
-    public class UpdateResidenceViewModel : CreateResidentViewModel
+    public class UpdateResidentViewModel : CreateResidentViewModel
     {
     }
 }

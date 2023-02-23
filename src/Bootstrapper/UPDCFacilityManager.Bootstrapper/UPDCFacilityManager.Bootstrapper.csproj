@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\UPDCFacilityManagersrc\Modules\Esatate\UPDCFacilityManager.Modules.Estates.Core\UPDCFacilityManager.Modules.Estates.Core.csproj" />
     <ProjectReference Include="..\..\Modules\Auth\UPDCFacilityManager.Modules.Auth\UPDCFacilityManager.Modules.Auth.csproj" />
     <ProjectReference Include="..\..\Modules\Cluster\UPDCFacilityManager.Modules.Cluster\UPDCFacilityManager.Modules.Cluster.csproj" />
     <ProjectReference Include="..\..\Modules\Estate\UPDCFacilityManager.Module.Estate\UPDCFacilityManager.Module.Estate.csproj" />
@@ -26,6 +25,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
 
 </Project>

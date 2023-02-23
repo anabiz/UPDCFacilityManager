@@ -13,6 +13,6 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Services
         //Task<IEnumerable<UserViewModel>> BrowseAsync();
         //Task<UserViewModel> GetAsync(string userId);
         Task CreateAsync(CreateResidentViewModel model);
-        Task UpdateAsync(UpdateResidenceViewModel model);
+        Task UpdateAsync(UpdateResidentViewModel model);
     }
 }
