@@ -118,5 +118,24 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Repositories
         {
             _context.Set<TEntity>().UpdateRange(entity);
         }
+        public async Task BeginTransaction(Func<Task> action)
+        {
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                await action();
+
+                await SaveChangesAsync();
+                await transaction.CommitAsync();
+
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
     }
 }

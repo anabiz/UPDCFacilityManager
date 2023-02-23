@@ -23,5 +23,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Repositories
         void RemoveRange(IEnumerable<TEntity> entity);
         IQueryable<TEntity> QueryAll(Expression<Func<TEntity, bool>> predicate = null);
         IQueryable<TEntity> FromSqlRaw(string query, object param = null);
+        Task SaveChangesAsync();
+        Task BeginTransaction(Func<Task> action);
     }
 }
