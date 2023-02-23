@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Diagnostics;
-using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Auth.Core.Services;
 using UPDCFacilityManager.Modules.Cluster.Core.Services;
 using UPDCFacilityManager.Modules.Residence.Core.ViewModels;
@@ -40,18 +40,20 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
         public async  Task<IActionResult> Create()
         {
             var clusters = await _clusterService.BrowseAsync();
-            var listItems = clusters.Select(x => new
+            List<SelectListItem> listItems = clusters.Select(x => new SelectListItem
             {
                 Value = x.Id,
                 Text = x.Name,
             }).ToList();
 
-            listItems.Insert(0, new
+            listItems.Insert(0, new SelectListItem
             {
                 Value = "",
                 Text = ""
             });
-            ViewBag.ClusterList = listItems;
+            //ViewBag.ClusterList = listItems;
+            TempData["ClusterList"] = JsonConvert.SerializeObject(listItems);
+            TempData.Keep();
             return View();
         }
 
@@ -59,9 +61,13 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
         [Authorize]
         public async Task<IActionResult> Create(CreateResidentViewModel model)
         {
-           
-            await _residentService.CreateAsync(model);
-            return View("index");
+            if (ModelState.IsValid)
+            {
+                await _residentService.CreateAsync(model);
+                return View("index");
+            }
+            TempData.Keep();
+            return View(model);
         }
         public IActionResult Details()
         {
