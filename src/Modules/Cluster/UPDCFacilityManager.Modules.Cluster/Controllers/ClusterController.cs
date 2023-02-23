@@ -31,9 +31,10 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
         }
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var clusters = await _clusterService.BrowseAsync();
+            return View(clusters);
         }
 
         [Authorize,HttpGet]
@@ -46,9 +47,12 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
         [Authorize]
         public async Task<IActionResult> Create(CreateClusterViewModel model)
         {
-
-            await _clusterService.CreateAsync(model);
-            return View("index");
+            if (ModelState.IsValid)
+            {
+                await _clusterService.CreateAsync(model);
+                return RedirectToAction("index");
+            }
+            return View(model);
         }
 
         [Authorize, HttpGet]

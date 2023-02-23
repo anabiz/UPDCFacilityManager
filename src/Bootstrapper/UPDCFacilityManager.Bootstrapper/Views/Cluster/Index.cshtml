@@ -1,13 +1,16 @@
-﻿@{
+﻿@model List<ClusterViewModel>
+
+@{
     ViewData["Title"] = "Cluster";
 }
 <div class="container justify-content-center p-5 pt-3">
     <div class="row">
-        <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label="YABA",ControllerName="Cluster", ActionName="Details",
-        image="~/images/cluster-icon.png"})" />
-
-        <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label="LEKKI",ControllerName="Cluster", ActionName="Details",
-        image="~/images/cluster-icon.png"})" />
+       
+        @foreach (var cluster in Model)
+        {
+             <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=cluster.Name,ControllerName="Cluster", ActionName="Details",
+             image="~/images/cluster-icon.png"})" />
+        }
 
         <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label="ADD CLUSTER",ControllerName="Cluster", ActionName="Create",
         image="~/images/add-cluster-icon.png"})" />

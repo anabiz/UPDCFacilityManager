@@ -39,7 +39,7 @@ namespace UPDCFacilityManager.Modules.Cluster.Core.Services
             Clusta cluster = _mapper.Map<Clusta>(model);
             cluster.Id = Guid.NewGuid().ToString();
             await _clusterRepository.AddAsync(cluster);
-
+            await _clusterRepository.SaveChangesAsync();
         }
 
         public Task UpdateAsync(UpdateClusterViewModel model)
