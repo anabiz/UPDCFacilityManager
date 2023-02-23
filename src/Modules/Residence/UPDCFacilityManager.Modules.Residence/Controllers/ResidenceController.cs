@@ -74,6 +74,12 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ListAllAsync()
+        {
+            var residents = await _residentService.BrowseAsync();
+            return View(residents);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

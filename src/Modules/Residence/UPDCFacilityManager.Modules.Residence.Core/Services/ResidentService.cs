@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections;
@@ -34,6 +35,19 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Services
             _logger = logger;
             _mapper = mapper;
             _appDbContext = appDbContext;
+        }
+
+        public async Task<IEnumerable<ResidentViewModel>> BrowseAsync()
+        {
+            var residents = await _residentRepository.QueryAll()
+                .Include(x => x.PhoneNumbers)
+                .Include(x => x.Emails)
+                .Include(x => x.Unit)
+                .Include(x => x.Estate)
+                     .ThenInclude(x => x.Cluster)
+                         .ToListAsync();
+
+            return _mapper.Map<List<ResidentViewModel>>(residents);
         }
 
         public async Task CreateAsync(CreateResidentViewModel model)

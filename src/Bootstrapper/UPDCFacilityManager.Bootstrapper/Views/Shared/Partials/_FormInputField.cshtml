@@ -1,0 +1,8 @@
+﻿@model FormInputFieldViewModel
+
+
+<div class="col">
+    <label asp-for="@Model.For" class="control-label mb-0">@Model.Label</label>
+    <input asp-for="@Model.For" class="form-control" placeholder=""/>
+    <span asp-validation-for="@Model.For" class="text-danger"></span>
+</div>

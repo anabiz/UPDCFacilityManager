@@ -9,7 +9,7 @@
     List<SelectListItem> ClusterList = JsonConvert.DeserializeObject<List<SelectListItem>>(TempData["ClusterList"] as string);
     TempData.Keep();
 }
-<!-- MultiStep Form -->
+
 <div class="container create-residence-container">
     <div class="d-flex align-items-center w-75 pt-4" style="margin: 0 auto;">
         <form  asp-action="Create" asp-controller="Residence" method="post"  id="msform" style="margin: 0 auto;width:100%;">
@@ -41,14 +41,14 @@
                         <span asp-validation-for="FirstPhone" class="text-danger"></span>
                     </div>
                     <div class="col">
-                        <label asp-for="CrusterId" class="control-label mb-0">Cluster (Region)</label>
+                        <label asp-for="ClusterId" class="control-label mb-0">Cluster (Region)</label>
                         <select 
-                            asp-for="CrusterId"
+                            asp-for="ClusterId"
                             id="cluster"
                             class="form-select"
                                 asp-items="@(new SelectList(ClusterList,"Value", "Text"))">
                         </select>
-                        <span asp-validation-for="CrusterId" class="text-danger"></span>
+                        <span asp-validation-for="ClusterId" class="text-danger"></span>
                     </div>
                 </div>
 

@@ -18,7 +18,7 @@ namespace UPDCFacilityManager.Modules.Residence.Core.ViewModels
         [Required]
         public string EstateId { get; set; }
         [Required]
-        public string CrusterId { get; set; }
+        public string ClusterId { get; set; }
         [Required]
         [EmailAddress]
         public string FirstEmail { get; set; }
