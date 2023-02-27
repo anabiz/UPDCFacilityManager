@@ -12,6 +12,7 @@ namespace UPDCFacilityManager.Shared.Model.ViewModels
         public string ActionName { get; set; }
         public string Label { get; set; }
         public string image { get; set; }
+        public string? Route { get; set; }
     }
     
 }

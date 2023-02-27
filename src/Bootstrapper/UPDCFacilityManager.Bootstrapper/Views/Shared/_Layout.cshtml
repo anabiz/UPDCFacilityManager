@@ -233,8 +233,8 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item @(controllerName == "Cluster" ? "active":"")">
-                            <a asp-controller="Cluster" asp-action="Index" class="nav-link" style="color: @(controllerName == "Cluster" ? "#9381FF" : "#F8F7FF" )">
+                        <li class="nav-item @(controllerName == "Cluster" || controllerName == "Estate" ? "active":"")">
+                            <a asp-controller="Cluster" asp-action="Index" class="nav-link" style="color: @(controllerName == "Cluster" || controllerName == "Estate" ? "#9381FF" : "#F8F7FF" )">
                                 <p>
                                     <i class="bi bi-houses-fill"></i> &nbsp;
                                     Cluster

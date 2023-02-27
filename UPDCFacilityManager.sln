@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPDCFacilityManager.Modules
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estate", "Estate", "{4AFC04D6-608B-4467-8AC9-2592C54910B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPDCFacilityManager.Module.Estate", "src\Modules\Estate\UPDCFacilityManager.Module.Estate\UPDCFacilityManager.Module.Estate.csproj", "{5EA7E130-B825-4A9A-B8BF-5CB7F8F531C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPDCFacilityManager.Module.Estates", "src\Modules\Estate\UPDCFacilityManager.Module.Estate\UPDCFacilityManager.Module.Estates.csproj", "{5EA7E130-B825-4A9A-B8BF-5CB7F8F531C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UPDCFacilityManager.Modules.Residence.Core", "src\Modules\Residence\UPDCFacilityManager.Modules.Residence.Core\UPDCFacilityManager.Modules.Residence.Core.csproj", "{67720CA0-BFD0-445A-90BD-0842D05ABBD8}"
 EndProject

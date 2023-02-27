@@ -1,7 +1,7 @@
 ﻿@model CardActionViewModel
 
-<div class="text-center col-sm-2 align-items-stretch p-2 pt-4 mr-4 elevation-2" style="background-color: #FFD8BE;">
-    <a asp-action="@Model.ActionName" asp-controller="@Model.ControllerName">
+<div class="text-center col-sm-2 align-items-stretch p-2 pt-4 mr-4 mt-4 elevation-2" style="background-color: #FFD8BE;">
+    <a asp-action="@Model.ActionName" asp-controller="@Model.ControllerName" asp-route-id="@Model.Route">
         <img src="@Url.Content(@Model.image)" style="max-width:60px;max-height:60px"/>
         <div class="text-center pt-2">
             <h5 style="color:black">@Model.Label</h5>

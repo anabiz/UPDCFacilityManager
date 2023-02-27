@@ -42,6 +42,16 @@ namespace UPDCFacilityManager.Modules.Cluster.Core.Services
             await _clusterRepository.SaveChangesAsync();
         }
 
+        public async Task<ClusterViewModel> GetEstatesByClusterId(string id)
+        {
+            var clusterEstates = await _clusterRepository.QueryAll(x => x.Id == id)
+                .Include(x => x.Estates).FirstOrDefaultAsync();
+
+            var result = _mapper.Map<ClusterViewModel>(clusterEstates);
+
+            return result;
+        }
+
         public Task UpdateAsync(UpdateClusterViewModel model)
         {
             throw new NotImplementedException();

@@ -12,6 +12,7 @@ namespace UPDCFacilityManager.Modules.Cluster.Mapper
                 //.ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email.Trim()));
 
             CreateMap<Clusta, ClusterViewModel>();
+            CreateMap<Estate, EstateViewModel>();
         }
     }
 }

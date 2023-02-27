@@ -56,9 +56,10 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
         }
 
         [Authorize, HttpGet]
-        public IActionResult Details()
+        public async Task<IActionResult> Details([FromRoute] string id)
         {
-            return View();
+            var result = await _clusterService.GetEstatesByClusterId(id);
+            return View(result);
         }
 
         #region Estate
@@ -96,6 +97,12 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
                 return Json(result);
             }
             return null;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EstateDetails(string id)
+        {
+            return View("~/Views/Estate/EstateDetails.cshtml");
         }
         #endregion
     }

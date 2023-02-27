@@ -12,5 +12,13 @@ namespace UPDCFacilityManager.Modules.Cluster.Core.ViewModels
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public List<EstateViewModel> Estates { get; set; }
+    }
+
+    public class EstateViewModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

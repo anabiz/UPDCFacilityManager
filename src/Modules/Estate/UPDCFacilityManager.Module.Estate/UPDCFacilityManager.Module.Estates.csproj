@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Modules\Auth\UPDCFacilityManager.Modules.Auth.Core\UPDCFacilityManager.Modules.Auth.Core.csproj" />
     <ProjectReference Include="..\..\..\Shared\UPDCFacilityManager.Shared.Infrastructure\UPDCFacilityManager.Shared.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 using UPDCFacilityManager.Modules.Auth.Core;
+using UPDCFacilityManager.Modules.Estates.Core;
 using UPDCFacilityManager.Modules.Residence.Core;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthConfiguration(builder.Configuration);
 builder.Services.AddClusterConfiguration();
 builder.Services.AddResidentConfiguration();
+builder.Services.AddEstateConfiguration();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAuthentication();
