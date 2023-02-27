@@ -30,6 +30,15 @@ namespace UPDCFacilityManager.Modules.Estates.Services
         {
             throw new NotImplementedException();
         }
+        public async Task<EstateViewModel> GetUnitsAsync( string estateId)
+        {
+            var estate = await _appDbContext.Estates.Where(x => x.Id == estateId)
+               .Include(x => x.Units)
+               .Include(x => x.Cluster)
+               .FirstOrDefaultAsync();
+
+            return _mapper.Map<EstateViewModel>(estate);
+        }
 
         public async Task<EstateViewModel> CreateAsync(CreateEstateViewModel model, string Id)
         {

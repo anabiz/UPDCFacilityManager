@@ -43,6 +43,10 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
         {
             return View();
         }
+        public IActionResult CreateUnit()
+        {
+            return View();
+        }
 
         [HttpPost]
         [Authorize]
@@ -54,6 +58,18 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
                 return RedirectToAction("Details", "Cluster", new { id = clusterId });
             }
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> EstateUnits( [FromRoute] string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var result = await _estateService.GetUnitsAsync(id);
+                return View(result);
+            }
+            return RedirectToAction("index", "Cluster");
         }
     }
 }

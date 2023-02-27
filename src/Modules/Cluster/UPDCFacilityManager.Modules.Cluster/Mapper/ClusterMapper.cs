@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Cluster.Core.ViewModels;
+using UPDCFacilityManager.Modules.Estates.ViewModels;
 
 namespace UPDCFacilityManager.Modules.Cluster.Mapper
 {

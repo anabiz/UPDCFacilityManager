@@ -8,7 +8,7 @@
             </h3>
         </div>
         <div class="col-6">
-        <span class="text-end" style="width:100%;display:inline-block;text-align:right">
+            <span class="text-end" style="width:100%;display:inline-block;text-align:right">
                 <a asp-action="Create" asp-controller="Estate" asp-route-clusterId="@Model.Id" class="btn" style="background-color:#9381FF; color:#F8F7FF">
                     <i class="bi bi-plus-circle"></i> &nbsp; Add Estate
                 </a>
@@ -21,7 +21,7 @@
 
         @foreach (var estate in Model.Estates)
         {
-            <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=estate.Name,ControllerName="Cluster", ActionName="EstateDetails",
+            <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=estate.Name,ControllerName="Estate", ActionName="EstateUnits",
              image="~/images/cluster-icon.png", Route=estate.Id})" />
         }
     </div>
