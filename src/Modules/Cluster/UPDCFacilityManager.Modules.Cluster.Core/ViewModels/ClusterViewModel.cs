@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UPDCFacilityManager.Modules.Estates.ViewModels;
 
 namespace UPDCFacilityManager.Modules.Cluster.Core.ViewModels
 {
@@ -15,10 +16,5 @@ namespace UPDCFacilityManager.Modules.Cluster.Core.ViewModels
         public List<EstateViewModel> Estates { get; set; }
     }
 
-    public class EstateViewModel
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-    }
+
 }

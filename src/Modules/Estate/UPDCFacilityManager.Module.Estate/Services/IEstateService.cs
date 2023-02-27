@@ -1,4 +1,5 @@
-﻿using UPDCFacilityManager.Modules.Estates.ViewModels;
+﻿using UPDCFacilityManager.Modules.Cluster.Core.ViewModels;
+using UPDCFacilityManager.Modules.Estates.ViewModels;
 
 namespace UPDCFacilityManager.Modules.Estates.Services
 {
@@ -8,6 +9,8 @@ namespace UPDCFacilityManager.Modules.Estates.Services
         //Task<UserViewModel> GetAsync(string userId);
         Task<EstateViewModel> CreateAsync(CreateEstateViewModel model, string clusterId);
         Task UpdateAsync(UpdateEstateViewModel model);
-        Task<EstateViewModel> GetEstatesById(string id); 
+        Task<EstateViewModel> GetEstatesById(string id);
+        Task<EstateViewModel> GetUnitsAsync(string estateId);
+        Task<ClusterEstateViewModel> GetEstatesByClusterId(string id);
     }
 }

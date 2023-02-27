@@ -10,6 +10,6 @@ namespace UPDCFacilityManager.Modules.Cluster.Core.Services
         //Task<UserViewModel> GetAsync(string userId);
         Task CreateAsync(CreateClusterViewModel model);
         Task UpdateAsync(UpdateClusterViewModel model);
-        Task<ClusterViewModel> GetEstatesByClusterId(string id); 
+         
     }
 }

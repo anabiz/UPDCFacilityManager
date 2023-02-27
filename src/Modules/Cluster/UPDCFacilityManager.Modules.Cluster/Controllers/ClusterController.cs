@@ -55,13 +55,6 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
             return View(model);
         }
 
-        [Authorize, HttpGet]
-        public async Task<IActionResult> Details([FromRoute] string id)
-        {
-            var result = await _clusterService.GetEstatesByClusterId(id);
-            return View(result);
-        }
-
         #region Estate
         // GET: //5
         [HttpGet]

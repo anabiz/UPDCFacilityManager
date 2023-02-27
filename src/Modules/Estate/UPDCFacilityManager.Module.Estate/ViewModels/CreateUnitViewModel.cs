@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UPDCFacilityManager.Modules.Estates.ViewModels;
 
 namespace UPDCFacilityManager.Modules.Estates.ViewModels
 {
-    public class EstateViewModel : CreateEstateViewModel
+    public class CreateUnitViewModel : CreateEstateViewModel
     {
-        public string Id { get; set; }
-        public List<UnitViewModel> Units { get; set; } 
     }
 }

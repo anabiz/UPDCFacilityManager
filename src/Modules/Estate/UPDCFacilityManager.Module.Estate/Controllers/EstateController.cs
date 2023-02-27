@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UPDCFacilityManager.Modules.Estates.ViewModels;
 using UPDCFacilityManager.Modules.Estates.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace UPDCFacilityManager.Module.Estates.Controllers
 {
@@ -32,13 +33,6 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -50,10 +44,23 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _estateService.CreateAsync(model, clusterId);
+                await _estateService.CreateAsync(model, clusterId);
                 return RedirectToAction("Details", "Cluster", new { id = clusterId });
             }
             return View(model);
+        }
+
+        [Authorize, HttpGet]
+        public async Task<IActionResult> Index([FromRoute] string id)
+        {
+            var result = await _estateService.GetEstatesByClusterId(id);
+
+            var cookieOptions = new CookieOptions();
+            cookieOptions.Expires = DateTime.Now.AddDays(1);
+            cookieOptions.Path = "/";
+            Response.Cookies.Append("clusterId", id, cookieOptions);
+
+            return View(result);
         }
     }
 }

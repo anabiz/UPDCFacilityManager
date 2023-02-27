@@ -1,33 +1,37 @@
-﻿
+﻿@model ClusterEstateViewModel
 @{
-    ViewData["Title"] = "Estates";
+    TempData.Keep();
 }
-<div class="container justify-content-center p-5 pt-3">
-    <div class="row">
-         <div class="text-center col-sm-3 align-items-stretch p-4 mr-3 elevation-2" style="background-color: #FFD8BE;">
-            <a asp-action="Details" asp-controller="Estate">
-                <img src="~/images/cluster-icon.png" />
-                <div class="text-center p-2">
-                    <h5 style="color:lack">YABA</h5>
-                </div>
-            </a>
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-6 d-flex flex-row">
+            <h6 class="text-muted" style="background-color:#B8B8FF; width:fit-content; color:#F8F7FF;padding:5px;border-radius:10px">
+                <a asp-action="index" asp-controller="cluster">
+                    Clusters
+                </a>
+            </h6>
+            <h6 style="padding:5px">/</h6>
+            <h6 style="background-color:#B8B8FF; width:fit-content; color:#F8F7FF;padding:5px;border-radius:10px">
+                @Model.Name Cluster
+            </h6>
         </div>
-        <div class="text-center col-sm-3 align-items-stretch p-4 mr-3 elevation-2" style="background-color: #FFD8BE;">
-            <a asp-action="Details" asp-controller="Estate">
-                <img src="~/images/cluster-icon.png" />
-                <div class="text-center p-2">
-                    <h5 style="color:black">LEKKI</h5>
-                </div>
-            </a>
+        <div class="col-6">
+            <span class="text-end" style="width:100%;display:inline-block;text-align:right">
+                <a asp-action="Create" asp-controller="Estate" asp-route-clusterId="@Model.Id" class="btn" style="background-color:#9381FF; color:#F8F7FF">
+                    <i class="bi bi-plus-circle"></i> &nbsp; Add Estate
+                </a>
+            </span>
         </div>
-        <div class="text-center col-sm-3 align-items-stretch p-4 elevation-2" style="background-color: #FFD8BE;">
-            <a asp-action="Create" asp-controller="Estate">
-                <img src="~/images/add-cluster-icon.png" />
-                <div class="text-center p-2">
-                    <h5 style="color:black">ADD CLUSTER</h5>
-                </div>
-            </a>
-        </div>
-
     </div>
 </div>
+<div class="container justify-content-center px-5">
+    <div class="row">
+
+        @foreach (var estate in Model.Estates)
+        {
+            <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=estate.Name,ControllerName="Unit", ActionName="Index",
+             image="~/images/cluster-icon.png", Route=estate.Id})" />
+        }
+    </div>
+</div>
+

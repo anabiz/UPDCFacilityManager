@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using UPDCFacilityManager.Modules.Auth.Core.Data;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Estates.ViewModels;
+using UPDCFacilityManager.Modules.Cluster.Core.ViewModels;
 
 namespace UPDCFacilityManager.Modules.Estates.Services
 {
@@ -30,6 +31,15 @@ namespace UPDCFacilityManager.Modules.Estates.Services
         {
             throw new NotImplementedException();
         }
+        public async Task<EstateViewModel> GetUnitsAsync( string estateId)
+        {
+            var estate = await _appDbContext.Estates.Where(x => x.Id == estateId)
+               .Include(x => x.Units)
+               .Include(x => x.Cluster)
+               .FirstOrDefaultAsync();
+
+            return _mapper.Map<EstateViewModel>(estate);
+        }
 
         public async Task<EstateViewModel> CreateAsync(CreateEstateViewModel model, string Id)
         {
@@ -50,6 +60,15 @@ namespace UPDCFacilityManager.Modules.Estates.Services
         public Task UpdateAsync(UpdateEstateViewModel model)
         {
             throw new NotImplementedException();
+        }
+        public async Task<ClusterEstateViewModel> GetEstatesByClusterId(string id)
+        {
+            var clusterEstates = await _appDbContext.Clusters.Where(x => x.Id == id)
+                .Include(x => x.Estates).FirstOrDefaultAsync();
+
+            var result = _mapper.Map<ClusterEstateViewModel>(clusterEstates);
+
+            return result;
         }
     }
 }
