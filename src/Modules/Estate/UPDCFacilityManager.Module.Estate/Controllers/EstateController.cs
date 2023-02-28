@@ -37,6 +37,10 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
         {
             return View();
         }
+        public IActionResult CreateUnit()
+        {
+            return View();
+        }
 
         [HttpPost]
         [Authorize]
