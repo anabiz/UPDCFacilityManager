@@ -13,10 +13,6 @@ namespace UPDCFacilityManager.Modules.Estates.Mapper
             CreateMap<Estate, EstateViewModel>();
 
             CreateMap<Clusta, ClusterEstateViewModel>();
-
-            CreateMap<Unit, UnitViewModel>()
-                .ForMember(dest => dest.Estate, opt => opt.MapFrom(src => src.Estate.Name))
-                .ForMember(dest => dest.Cluster, opt => opt.MapFrom(src => src.Estate.Cluster.Name));
         }
     }
 }

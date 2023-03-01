@@ -49,7 +49,7 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
             if (ModelState.IsValid)
             {
                 await _estateService.CreateAsync(model, clusterId);
-                return RedirectToAction("Details", "Cluster", new { id = clusterId });
+                return RedirectToAction("Index", "Estate", new { id = clusterId });
             }
             return View(model);
         }
