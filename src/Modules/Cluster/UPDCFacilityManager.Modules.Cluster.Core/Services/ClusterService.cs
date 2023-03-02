@@ -28,10 +28,14 @@ namespace UPDCFacilityManager.Modules.Cluster.Core.Services
             _mapper = mapper;
         }
 
-        public async Task<List<ClusterViewModel>> BrowseAsync()
+        public async Task<List<ClusterViewModel>> BrowseAsync(string search)
         {
-            var clusters = await _clusterRepository.QueryAll().ToListAsync();
-            return _mapper.Map<List<ClusterViewModel>>( clusters );
+            var clusters = _clusterRepository.QueryAll();
+            if (!string.IsNullOrEmpty(search))
+            {
+                clusters = clusters.Where(x => x.Name.ToLower().Contains(search.ToLower()));
+            }
+            return _mapper.Map<List<ClusterViewModel>>( await clusters.ToListAsync() );
         }
 
         public async Task CreateAsync(CreateClusterViewModel model)

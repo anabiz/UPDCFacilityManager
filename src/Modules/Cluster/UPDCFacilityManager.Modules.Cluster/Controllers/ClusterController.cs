@@ -30,12 +30,14 @@ namespace UPDCFacilityManager.Modules.Cluster.Controllers
             _appDbContext = appDbContext;
         }
 
+        
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] string? search)
         {
-            var clusters = await _clusterService.BrowseAsync();
+            var clusters = await _clusterService.BrowseAsync(search);
             return View(clusters);
         }
+
 
         [Authorize,HttpGet]
         public IActionResult Create()

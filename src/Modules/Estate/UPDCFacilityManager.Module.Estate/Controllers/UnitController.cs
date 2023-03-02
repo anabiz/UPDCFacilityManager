@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UPDCFacilityManager.Module.Estates.Services;
-using UPDCFacilityManager.Modules.Estates.Services;
 using UPDCFacilityManager.Modules.Estates.ViewModels;
 
 namespace UPDCFacilityManager.Module.Estates.Controllers
@@ -17,29 +16,26 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
     {
         private readonly ILogger<EstateController> _logger;
         private readonly IMapper _mapper;
-        private readonly IEstateService _estateService;
         private readonly IUnitService _unitService;
         public UnitController(
             ILogger<EstateController> logger,
-            IEstateService estateService,
             IMapper mapper,
             IUnitService unitService
             ) 
         {
             _logger = logger;
             _mapper = mapper;
-            _estateService = estateService;
             _unitService = unitService;
         }
 
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Index([FromRoute] string id)
+        public async Task<IActionResult> Index([FromRoute] string id, [FromQuery] string search)
         {
             if (!string.IsNullOrEmpty(id))
             {
-                var result = await _estateService.GetUnitsAsync(id);
+                var result = await _unitService.GetUnitsAsync(id, search);
                 TempData.Keep();
                 return View(result);
             }

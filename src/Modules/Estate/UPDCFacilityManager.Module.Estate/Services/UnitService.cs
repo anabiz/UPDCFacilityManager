@@ -44,5 +44,20 @@ namespace UPDCFacilityManager.Module.Estates.Services
 
             return "Unit Creation was Successful";
         }
+        public async Task<EstateViewModel> GetUnitsAsync(string estateId, string search)
+        {
+            var estate = await _appDbContext.Estates.Where(x => x.Id == estateId)
+               .Include(x => x.Units)
+               .Include(x => x.Cluster)
+               .FirstOrDefaultAsync();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                IEnumerable<Unit> units = estate!.Units.Where(x => x.Name.ToLower().Contains(search.ToLower()));
+                estate.Units = units.ToList();
+            }
+
+            return _mapper.Map<EstateViewModel>(estate);
+        }
     }
 }

@@ -37,9 +37,9 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
             return View();
         }
         [HttpGet]
-        public async  Task<IActionResult> Create()
+        public async  Task<IActionResult> Create([FromBody] string search)
         {
-            var clusters = await _clusterService.BrowseAsync();
+            var clusters = await _clusterService.BrowseAsync( search );
             List<SelectListItem> listItems = clusters.Select(x => new SelectListItem
             {
                 Value = x.Id,

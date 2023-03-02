@@ -31,15 +31,7 @@ namespace UPDCFacilityManager.Modules.Estates.Services
         {
             throw new NotImplementedException();
         }
-        public async Task<EstateViewModel> GetUnitsAsync( string estateId)
-        {
-            var estate = await _appDbContext.Estates.Where(x => x.Id == estateId)
-               .Include(x => x.Units)
-               .Include(x => x.Cluster)
-               .FirstOrDefaultAsync();
-
-            return _mapper.Map<EstateViewModel>(estate);
-        }
+      
 
         public async Task<EstateViewModel> CreateAsync(CreateEstateViewModel model, string Id)
         {
@@ -61,14 +53,19 @@ namespace UPDCFacilityManager.Modules.Estates.Services
         {
             throw new NotImplementedException();
         }
-        public async Task<ClusterEstateViewModel> GetEstatesByClusterId(string id)
+        public async Task<ClusterEstateViewModel> GetEstatesByClusterId(string id, [FromBody] string search)
         {
             var clusterEstates = await _appDbContext.Clusters.Where(x => x.Id == id)
-                .Include(x => x.Estates).FirstOrDefaultAsync();
+                .Include(x => x.Estates)
+                .FirstOrDefaultAsync();
 
-            var result = _mapper.Map<ClusterEstateViewModel>(clusterEstates);
+            if (!string.IsNullOrEmpty(search))
+            {
+                IEnumerable<Estate> estates = clusterEstates!.Estates.Where(x => x.Name.ToLower().Contains(search.ToLower()));
+                clusterEstates.Estates = estates.ToList();
+            }
 
-            return result;
+            return _mapper.Map<ClusterEstateViewModel>(clusterEstates); ;
         }
     }
 }

@@ -27,6 +27,7 @@
             let state_id = "";
             let parameter ="";
             let search_name ="";
+            let url_path = [];
 
             $("body").on('click', '#btnEdit', function () {
                 $("#MyPopup").modal("hide");
@@ -89,19 +90,10 @@
             });
 
        
-            $("#universalSearchParams").on("input", function () {
-                parameter = $(this).val().toString();
-                search_name = $('#universalSearchId').val();
-                console.log(parameter);
-
-                console.log("ytyrtewqe", document.getElementById('universalSearchId').value, search_name)
-                if (search_name == "Cluster") {
-                    console.log("hello")
-                } else if (search_name === "Estate") {
-                    console.log(search_name)
-                } else if (search_name == "Unit") {
-                    console.log(search_name)
-                } 
+            $("#global-search-submit").on("click", function () {
+                const url_param = window.location.pathname.trim();
+                document.getElementById("global-search").action = url_param;
+                document.getElementById("global-search").submit();
             });
       
         });
@@ -119,10 +111,12 @@
             <ul class="navbar-nav">
                 <li class="nav-item d-none d-sm-inline-block">
                     <div class="input-group pl-4" style="color:#9381FF">
-                        <h4 class="mr-3 mt-1" id="universalSearchId">@controllerName</h4>
-                        <input id="universalSearchParams" type="text" class="form-control" placeholder="Search">
+                        <h4 class="mr-3 mt-1" id="search-name">@controllerName</h4>
+                        <form id="global-search">
+                            <input id="universalSearchParams" type="search" class="form-control" placeholder="Search" name="search">
+                        </form>
                         <div >
-                            <button class="btn" type="button" style="border:1px solid">
+                            <button id="global-search-submit" class="btn" type="submit" style="border:1px solid">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>

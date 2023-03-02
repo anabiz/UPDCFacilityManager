@@ -55,9 +55,10 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
         }
 
         [Authorize, HttpGet]
-        public async Task<IActionResult> Index([FromRoute] string id)
+        public async Task<IActionResult> Index([FromRoute] string id, [FromQuery] string search)
         {
-            var result = await _estateService.GetEstatesByClusterId(id);
+            Console.WriteLine(search);
+            var result = await _estateService.GetEstatesByClusterId(id, search);
 
             var cookieOptions = new CookieOptions();
             cookieOptions.Expires = DateTime.Now.AddDays(1);
