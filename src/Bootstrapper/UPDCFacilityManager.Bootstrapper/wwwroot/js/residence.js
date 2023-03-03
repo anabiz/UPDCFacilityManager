@@ -1,43 +1,50 @@
 ﻿
+console.log("helloooo2222");
 
-var country_id="";
-$(document).ready(function () {
-    
+$(function () {
+    console.log("helloooo")
+    let cluster_id = "";
+
     $('#cluster').change(function () {
-        console.log("solemonnnn");
-
-        country_id = $('#Country').val();
-        var items = '';
+        cluster_id = $('#cluster').val();
+        let items = '';
 
         $.ajax({
-            type: "POST",
-            url: "/Inventory/GetState",
-            data: { countryid: country_id },
+            type: "GET",
+            url: "/Cluster/GetEstateByClusterId",
+            data: { clusterId: cluster_id },
             dataType: "json",
             success: function (data) {
                 $.each(data, function (k, option) {
-                    items += "<option value = '" + option.stateId + "'>" + option.stateName + " </option>";
+                    items += "<option value = '" + option.value + "'>" + option.text + " </option>";
                 });
-                $('#State').html(items);
+                $('#estate').html(items);
             }
         });
     });
 
-    $('#State').change(function () {
-        state_id = $('#State').val();
-            var items = '';
-            $('#City').empty();
-            $.ajax({
-                type: "POST",
-            url: "/Inventory/GetCity",
-            data: {stateid: state_id },
+    $('#estate').change(function () {
+        estate_id = $('#estate').val();
+        let items = '';
+        $('#unit').empty();
+        $.ajax({
+            type: "GET",
+            url: "/Cluster/GetUnitByEstateId",
+            data: { estateId: estate_id },
             dataType: "json",
             success: function (data) {
                 $.each(data, function (k, option) {
-                    items += "<option value = '" + option.cityId + "'>" + option.cityName + " </option>";
+                    items += "<option value = '" + option.value + "'>" + option.text + " </option>";
                 });
-            $('#City').html(items);
+                $('#unit').html(items);
             }
         });
     });
+
+
+
+
 });
+
+
+

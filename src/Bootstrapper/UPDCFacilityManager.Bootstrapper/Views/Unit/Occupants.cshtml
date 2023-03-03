@@ -1,7 +1,7 @@
 ﻿@model UnitViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Occupants";
     List<string> result = Context.Request.Path.ToString().Trim().Split('/').ToList();
     var unitId = result[3];
 }
