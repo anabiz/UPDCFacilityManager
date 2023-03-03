@@ -1,13 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+$(function () {
 
-// Write your JavaScript code.
-console.log('eeeeeeeeeeeeeeeeeeeeee', document.getElementById('search-name').innerHTML)
-document.getElementById('test').addEventListener('click', (e) => {
-    console.log(e)
-    alert("hello world");
-    console.log("hello wor")
-})
+    $("#global-search-submit").on("click", function () {
+        const url_param = window.location.pathname.trim();
+        document.getElementById("global-search").action = url_param;
+        document.getElementById("global-search").submit();
+    });
+
+});
 
 
 

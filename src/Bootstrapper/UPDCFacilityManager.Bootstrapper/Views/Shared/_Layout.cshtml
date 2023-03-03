@@ -20,86 +20,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
-    <script type="text/javascript">
-        $(function () {
-
-            let cluster_id = "";
-            let state_id = "";
-            let parameter ="";
-            let search_name ="";
-            let url_path = [];
-
-            $("body").on('click', '#btnEdit', function () {
-                $("#MyPopup").modal("hide");
-                const id = $(this).attr('data-id');
-                console.log(id)
-                $.ajax({
-                    url: `Edit/${id}`,
-                    //data: JSON.stringify(obj),
-                    type: 'GET',
-                    dataType: 'html',
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
-                        console.log(response);
-                        var id = JSON.parse(response).Id;
-                        var name = JSON.parse(response).FirstName;
-                        var country = JSON.parse(response).LastName;
-                        $('#txtId').val(id);
-                        $('#txtName').val(name);
-                        $('#txtCountry').val(country);
-                        $("#MyPopup").modal("show");
-                    }
-                });
-            });
-
-            $('#cluster').change(function () {
-                cluster_id = $('#cluster').val();
-                let items = '';
-
-                $.ajax({
-                    type: "GET",
-                    url: "/Cluster/GetEstateByClusterId",
-                    data: { clusterId: cluster_id },
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data)
-                        $.each(data, function (k, option) {
-                            items += "<option value = '" + option.value + "'>" + option.text + " </option>";
-                        });
-                        $('#estate').html(items);
-                    }
-                });
-            });
-
-            $('#estate').change(function () {
-                estate_id = $('#estate').val();
-                let items = '';
-                $('#unit').empty();
-                $.ajax({
-                    type: "GET",
-                    url: "/Cluster/GetUnitByEstateId",
-                    data: { estateId: estate_id },
-                    dataType: "json",
-                    success: function (data) {
-                        $.each(data, function (k, option) {
-                            items += "<option value = '" + option.value + "'>" + option.text + " </option>";
-                        });
-                        $('#unit').html(items);
-                    }
-                });
-            });
-
-       
-            $("#global-search-submit").on("click", function () {
-                const url_param = window.location.pathname.trim();
-                document.getElementById("global-search").action = url_param;
-                document.getElementById("global-search").submit();
-            });
-      
-        });
-
-    </script>
-
+    @RenderSection("Scripts", required: false)
 </head>
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
@@ -303,9 +224,10 @@
         <!-- Control Sidebar -->
        
     </div>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+   @* <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+   
 </body>
 </html>
