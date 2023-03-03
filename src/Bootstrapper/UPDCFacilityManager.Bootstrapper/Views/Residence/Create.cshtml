@@ -1,0 +1,88 @@
+﻿@using Newtonsoft.Json;
+@model CreateResidentViewModel
+
+@section Scripts{
+    <script src="~/js/residence.js"></script>
+}
+@{
+
+    List<SelectListItem> ClusterList = JsonConvert.DeserializeObject<List<SelectListItem>>(TempData["ClusterList"] as string);
+    TempData.Keep();
+}
+
+<div class="container create-residence-container">
+    <div class="d-flex align-items-center w-75 pt-4" style="margin: 0 auto;">
+        <form  asp-action="Create" asp-controller="Residence" method="post"  id="msform" style="margin: 0 auto;width:100%;">
+            <div style="margin-top:2rem; margin: 0 auto; width:85%; border:1px solid #D9D9D9; padding:0rem 2rem 1rem 2rem">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h3>Add Resident</h3>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="FirstName" class="control-label mb-0">First name</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="LastName" class="control-label mb-0">Last name</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group form-outline mt-2">
+                    <label asp-for="FirstEmail" class="control-label mb-0">Email Address</label>
+                    <input asp-for="FirstEmail" class="form-control" />
+                    <span asp-validation-for="FirstEmail" class="text-danger"></span>
+                </div>
+             
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="FirstPhone" class="control-label mb-0">Phone No.</label>
+                        <input asp-for="FirstPhone" class="form-control" />
+                        <span asp-validation-for="FirstPhone" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="ClusterId" class="control-label mb-0">Cluster (Region)</label>
+                        <select 
+                            asp-for="ClusterId"
+                            id="cluster"
+                            class="form-select"
+                                asp-items="@(new SelectList(ClusterList,"Value", "Text"))">
+                        </select>
+                        <span asp-validation-for="ClusterId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mt-2">
+                        <label asp-for="EstateId" class="control-label mb-0">Site (Estate)</label>
+                        <select asp-for="EstateId"
+                                class="form-select"
+                                id="estate"
+                        >
+                        </select>                        
+                        <span asp-validation-for="EstateId" class="text-danger"></span>
+                    </div>
+                    <div class="col mt-2">
+                        <label asp-for="UnitId" class="control-label mb-0">Unit No.</label>
+                        <select asp-for="UnitId"
+                                id="unit"
+                                class="form-select"
+                        >
+                        </select>                        
+                        <span asp-validation-for="UnitId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="pt-1 mt-2 mb-2 mr-5 text-right">
+                <a asp-action="index" class="btn w-25" style="border:1px solid #FF0000; color:#FF0000;">
+                    Cancel
+                </a>
+                <input type="submit" value="Add" class="btn w-25" style="background-color: #9381FF; color:#fff" />
+            </div>
+            
+            </form>
+
+     </div>
+</div>
+

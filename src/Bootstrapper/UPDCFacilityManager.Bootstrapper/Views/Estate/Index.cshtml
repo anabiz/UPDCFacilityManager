@@ -1,24 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Estates";
+﻿@model ClusterEstateViewModel
+@{
+    TempData.Keep();
 }
-
-<div class="row">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+<div class="container">
+    <div class="row pt-3">
+        <div class="col-6 d-flex flex-row">
+            <h6 class="text-muted" style="background-color:#B8B8FF; width:fit-content; color:#F8F7FF;padding:5px;border-radius:10px">
+                <a asp-action="index" asp-controller="cluster">
+                    Clusters
+                </a>
+            </h6>
+            <h6 style="padding:5px">/</h6>
+            <h6 style="background-color:#B8B8FF; width:fit-content; color:#F8F7FF;padding:5px;border-radius:10px">
+                @Model.Name Cluster
+            </h6>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <div class="col-6">
+            <span class="text-end" style="width:100%;display:inline-block;text-align:right">
+                <a asp-action="Create" asp-controller="Estate" asp-route-clusterId="@Model.Id" class="btn" style="background-color:#9381FF; color:#F8F7FF">
+                    <i class="bi bi-plus-circle"></i> &nbsp; Add Estate
+                </a>
+            </span>
         </div>
     </div>
 </div>
+<div class="container justify-content-center px-5">
+    <div class="row">
+    @{
+        if (Model.Estates.Count > 0)
+        {
+                foreach (var estate in Model.Estates)
+                {
+                    <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=estate.Name,ControllerName="Unit", ActionName="Index",
+                          image="~/images/cluster-icon.png", Route=estate.Id})" />
+                }
+
+        }
+        else
+        {
+            <div  class="text-center">
+                    <h3>No Cluster Found</h3>
+            </div> 
+        }
+    }
+    </div>
+</div>
+

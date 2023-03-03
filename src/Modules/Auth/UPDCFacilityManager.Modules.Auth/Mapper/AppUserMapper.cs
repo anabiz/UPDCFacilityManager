@@ -11,12 +11,14 @@ using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
 
 namespace UPDCFacilityManager.Modules.Auth.Mapper
 {
-    public class RegisterMapper : Profile
+    public class AppUserMapper : Profile
     {
-        public RegisterMapper()
+        public AppUserMapper()
         {
             CreateMap<RegisterViewModel, AppUser>();
                 //.ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email.Trim()));
+
+            CreateMap<AppUser, UserViewModel>();
         }
     }
 }

@@ -3,6 +3,12 @@
 }
 
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Residence</h1>
+<div class="container justify-content-center p-5">
+    <div class="row">
+        <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label="ADD RESIDENT",ControllerName="Residence", ActionName="Create", 
+        image="~/images/add-resident.png"})" />
+
+        <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label="VIEW RESIDENT",ControllerName="Residence", ActionName="ListAll",
+        image="~/images/view-resident.png"})" /> 
+    </div>
 </div>

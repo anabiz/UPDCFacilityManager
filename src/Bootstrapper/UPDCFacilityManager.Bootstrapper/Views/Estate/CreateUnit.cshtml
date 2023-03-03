@@ -1,0 +1,38 @@
+﻿@model CreateUnitViewModel
+@{
+    var estateId = Context.Request.Query["estateId"];
+}
+
+
+<div class="container create-residence-container">
+    <div class="d-flex align-items-center w-75 pt-4" style="margin: 0 auto;">
+        <form asp-action="CreateUnit" asp-controller="Estate" asp-route-clusterId="@estateId" method="post" id="msform" style="margin: 0 auto;width:100%;">
+            <div style="margin-top:2rem; margin: 0 auto; width:85%; border:1px solid #D9D9D9; padding:0rem 2rem 1rem 2rem">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h3>Add Unit</h3>
+
+                <div class="form-group form-outline mt-2">
+                    <label asp-for="Name" class="control-label mb-0">Unit Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group form-outline mt-2">
+                    <label asp-for="Description" class="control-label mb-0">Description</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="pt-1 mt-2 mb-2 mr-5 text-right">
+                <a asp-action="EstateUnits" asp-controller="Estate" asp-route-id="@Context.Request.Query["estateId"]" class="btn w-25" style="border:1px solid #FF0000; color:#FF0000;">
+                    Cancel
+                </a>
+                <input type="submit" value="Add" class="btn w-25" style="background-color: #9381FF; color:#fff" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

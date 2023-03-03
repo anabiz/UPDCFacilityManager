@@ -29,6 +29,48 @@ body {
 }
 
 .active {
-    background-color: #666;
-    color: white;
+    background-color: #F8F7FF;
+    color: #9381FF;
+    border-radius: 0.4rem;
+}
+.nav-text {
+    color: #F8F7FF;
+}
+
+a {
+    text-decoration: none;
+}
+
+.all-button {
+    background-color: #9381FF;
+    color: #fff
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.create-residence-container {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    max-height: 500px;
+    margin: 0 auto
+}
+
+.create-residence-container::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }

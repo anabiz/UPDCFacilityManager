@@ -2,9 +2,12 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-console.log('eeeeeeeeeeeeeeeeeeeeee')
+console.log('eeeeeeeeeeeeeeeeeeeeee', document.getElementById('search-name').innerHTML)
 document.getElementById('test').addEventListener('click', (e) => {
     console.log(e)
     alert("hello world");
     console.log("hello wor")
 })
+
+
+

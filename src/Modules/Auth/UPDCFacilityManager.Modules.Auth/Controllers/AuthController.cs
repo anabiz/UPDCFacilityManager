@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
+using UPDCFacilityManager.Modules.Auth.Core.Services;
 using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
 using UPDCFacilityManager.Shared.Models;
 
@@ -15,25 +16,29 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
         private readonly ILogger<AuthController> _logger;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
         public AuthController(
             ILogger<AuthController> logger,
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
+            IUserService userService,
             IMapper mapper
             )
         {
             _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
             _mapper = mapper;
         }
         
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var users = await _userService.BrowseAsync();
+            return View(users);
         }
 
         [HttpGet]
@@ -75,7 +80,7 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if(result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Estate");
+                    return RedirectToAction("Index", "Residence");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt");
             }
@@ -87,6 +92,13 @@ namespace UPDCFacilityManager.Modules.Auth.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
+        }
+
+        public async Task<JsonResult> Edit(string id)
+        {
+            var user = await _userService.GetAsync(id);
+            Console.WriteLine(user.Email);
+            return Json(user);
         }
 
 

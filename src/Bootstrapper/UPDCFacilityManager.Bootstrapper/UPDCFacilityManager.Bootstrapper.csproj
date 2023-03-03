@@ -8,15 +8,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Auth\UPDCFacilityManager.Modules.Auth\UPDCFacilityManager.Modules.Auth.csproj" />
-    <ProjectReference Include="..\..\Modules\Estate\UPDCFacilityManager.Module.Estate\UPDCFacilityManager.Module.Estate.csproj" />
+    <ProjectReference Include="..\..\Modules\Cluster\UPDCFacilityManager.Modules.Cluster\UPDCFacilityManager.Modules.Cluster.csproj" />
+    <ProjectReference Include="..\..\Modules\Estate\UPDCFacilityManager.Module.Estate\UPDCFacilityManager.Module.Estates.csproj" />
     <ProjectReference Include="..\..\Modules\Report\UPDCFacilityManager.Modules.Report\UPDCFacilityManager.Modules.Report.csproj" />
+    <ProjectReference Include="..\..\Modules\Residence\UPDCFacilityManager.Modules.Residence.Core\UPDCFacilityManager.Modules.Residence.Core.csproj" />
     <ProjectReference Include="..\..\Modules\Residence\UPDCFacilityManager.Modules.Residence\UPDCFacilityManager.Modules.Residence.csproj" />
     <ProjectReference Include="..\..\Shared\UPDCFacilityManager.Shared.Infrastructure\UPDCFacilityManager.Shared.Infrastructure.csproj" />
     <ProjectReference Include="..\..\shared\UPDCFacilityManager.Shared.Model\UPDCFacilityManager.Shared.Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +25,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
 
 </Project>
