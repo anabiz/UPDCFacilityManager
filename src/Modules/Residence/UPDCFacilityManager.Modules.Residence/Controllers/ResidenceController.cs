@@ -37,9 +37,9 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
             return View();
         }
         [HttpGet]
-        public async  Task<IActionResult> Create([FromBody] string search)
+        public async  Task<IActionResult> Create()
         {
-            var clusters = await _clusterService.BrowseAsync( search );
+            var clusters = await _clusterService.BrowseAsync();
             List<SelectListItem> listItems = clusters.Select(x => new SelectListItem
             {
                 Value = x.Id,
@@ -74,9 +74,9 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ListAllAsync()
+        public async Task<IActionResult> ListAllAsync([FromQuery] string? search)
         {
-            var residents = await _residentService.BrowseAsync();
+            var residents = await _residentService.BrowseAsync(search);
             return View(residents);
         }
 

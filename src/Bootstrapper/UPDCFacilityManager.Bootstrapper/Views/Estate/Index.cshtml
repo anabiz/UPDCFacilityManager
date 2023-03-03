@@ -26,12 +26,23 @@
 </div>
 <div class="container justify-content-center px-5">
     <div class="row">
-
-        @foreach (var estate in Model.Estates)
+    @{
+        if (Model.Estates.Count > 0)
         {
-            <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=estate.Name,ControllerName="Unit", ActionName="Index",
-             image="~/images/cluster-icon.png", Route=estate.Id})" />
+                foreach (var estate in Model.Estates)
+                {
+                    <partial name="~/Views/Shared/Partials/_ActionCard.cshtml" , model="@(new CardActionViewModel{Label=estate.Name,ControllerName="Unit", ActionName="Index",
+                          image="~/images/cluster-icon.png", Route=estate.Id})" />
+                }
+
         }
+        else
+        {
+            <div  class="text-center">
+                    <h3>No Cluster Found</h3>
+            </div> 
+        }
+    }
     </div>
 </div>
 

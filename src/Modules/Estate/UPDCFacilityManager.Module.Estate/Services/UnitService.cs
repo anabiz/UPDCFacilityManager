@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UPDCFacilityManager.Module.Estates.ViewModels;
 using UPDCFacilityManager.Modules.Auth.Core.Data;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Estates.Services;
@@ -44,6 +45,43 @@ namespace UPDCFacilityManager.Module.Estates.Services
 
             return "Unit Creation was Successful";
         }
+
+        public async Task<UnitViewModel> CreateOccupantAsync(CreateOccupantViewModel model, string unitId)
+        {
+            var occupant = _mapper.Map<Occupant>(model);
+            occupant.Id = Guid.NewGuid().ToString();
+            occupant.UnitId = unitId;
+
+            Random rnd = new Random();
+            int randomNo = rnd.Next(10000000, 99999999);
+
+            occupant.Code = randomNo.ToString();
+
+            await _appDbContext.Occupants.AddAsync(occupant);  
+            _appDbContext.SaveChanges();
+
+            var unit = _appDbContext.Units.Where(x => x.Id== unitId)
+                  .Include(x => x.Occupants)
+                  .FirstOrDefault();
+
+            return _mapper.Map<UnitViewModel>(unit);
+        }
+
+        public async Task<UnitViewModel> GetUnitOccupantsAsync(string unitId, string? search = null)
+        {
+            var units = await _appDbContext.Units.Where(x => x.Id == unitId)
+            .Include(x => x.Occupants)
+            .FirstOrDefaultAsync();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                IEnumerable<Occupant> occupants = units!.Occupants.Where(x => x.Email.ToLower().Contains(search.ToLower()));
+                units.Occupants = occupants.ToList();
+            }
+
+            return _mapper.Map<UnitViewModel>(units);
+        }
+
         public async Task<EstateViewModel> GetUnitsAsync(string estateId, string search)
         {
             var estate = await _appDbContext.Estates.Where(x => x.Id == estateId)

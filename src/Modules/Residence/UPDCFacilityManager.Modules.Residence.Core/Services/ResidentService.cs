@@ -37,17 +37,24 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Services
             _appDbContext = appDbContext;
         }
 
-        public async Task<IEnumerable<ResidentViewModel>> BrowseAsync()
+        public async Task<IEnumerable<ResidentViewModel>> BrowseAsync(string? search)
         {
-            var residents = await _residentRepository.QueryAll()
+            var residents = _appDbContext.Residents
                 .Include(x => x.PhoneNumbers)
                 .Include(x => x.Emails)
                 .Include(x => x.Unit)
                 .Include(x => x.Estate)
-                     .ThenInclude(x => x.Cluster)
-                         .ToListAsync();
+                     .ThenInclude(x => x.Cluster) as IQueryable<Resident>;
 
-            return _mapper.Map<List<ResidentViewModel>>(residents);
+            if (!string.IsNullOrEmpty(search))
+            {
+                search = search.ToLower();
+                residents = residents.Where(x => x.FirstName.Contains(search) ||
+                     x.LastName.ToLower().Contains(search) ||
+                     x.Emails.Any(c => c.EmailAddress.ToLower().Contains(search)));
+            }
+
+            return _mapper.Map<List<ResidentViewModel>>(await residents.ToListAsync());
         }
 
         public async Task CreateAsync(CreateResidentViewModel model)

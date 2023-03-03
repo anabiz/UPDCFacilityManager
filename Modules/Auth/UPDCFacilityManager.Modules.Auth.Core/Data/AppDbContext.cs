@@ -18,6 +18,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Data
         public DbSet<Unit> Units { get; set; }
         public DbSet<Resident> Residents{ get; set; }
         public DbSet<Clusta> Clusters { get; set; }
+        public DbSet<Occupant> Occupants { get; set; }
 
     }
 }

@@ -1,9 +1,9 @@
-﻿@model EstateViewModel
+﻿@model UnitViewModel
 
 @{
     ViewData["Title"] = "Index";
-    var estateId = Context.Request.Query["estateId"];
-    var clusterId = Context.Request.Cookies["clusterId"];
+    List<string> result = Context.Request.Path.ToString().Trim().Split('/').ToList();
+    var unitId = result[3];
 }
 
 <div class="container mb-3">
@@ -16,67 +16,95 @@
             </h6>
             <h6 style="padding:5px">/</h6>
             <h6 class="text-muted" style="background-color:#B8B8FF; width:fit-content; color:#F8F7FF;padding:5px;border-radius:10px">
-                <a asp-action="index" asp-controller="Estate" asp-route-id="@clusterId">
+                <a asp-action="index" asp-controller="Estate" asp-route-id="">
                     Estates
                 </a>
             </h6>
             <h6 style="padding:5px">/</h6>
             <h6 style="background-color:#B8B8FF; width:fit-content; color:#F8F7FF;padding:5px;border-radius:10px">
-                @Model.Name Estate
+                @Model.Name Unit
             </h6>
         </div>
         <div class="col-6">
             <span class="text-end" style="width:100%;display:inline-block;text-align:right">
-                <a asp-action="Create" asp-controller="Unit" asp-route-estateId="@Model.Id" class="btn" style="background-color:#9381FF; color:aliceblue">
-                    <i class="bi bi-plus-circle"></i> &nbsp; Add Unit
+                <a asp-action="CreateOccupant" asp-controller="Unit" asp-route-unitId="@unitId" class="btn" style="background-color:#9381FF; color:aliceblue">
+                    <i class="bi bi-plus-circle"></i> &nbsp; Add Occupant
                 </a>
             </span>
         </div>
     </div>
 </div>
 
+
+<div class="container mb-3">
+    <div class="row pt-3">
+        <div class="col-6 d-flex flex-row" style="border:1px solid; max-height: 50px">
+           
+            
+        </div>
+        <div class="col-6" style="border:1px solid red; max-height: 50px">
+     
+        </div>
+        <div class="col-6" style="border:1px solid; max-height: 50px">
+
+        </div>
+    </div>
+</div>
+
 @{
-    if (Model.Units.Count > 0)
+    if (Model.Occupants.Count > 0)
     {
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Name
+                        FirstName
                     </th>
                     <th>
-                      Status
+                        LastName
                     </th>
                     <th>
-                        Estate
+                        Email
                     </th>
                     <th>
-                        Cluster
+                        Status
+                    </th>
+                    <th>
+                        Unit
+                    </th>
+                    <th>
+                        Onboarding Code
                     </th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Units)
+                @foreach (var item in Model.Occupants)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Estate)
+                            @Html.DisplayFor(modelItem => item.UnitName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Cluster)
+                            @Html.DisplayFor(modelItem => item.Code)
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="bi bi-pencil-square" style="color:#9381FF; width:80%"></i> &nbsp;
                             </a>
-                            <a asp-action="Occupants" asp-controller="Unit" asp-route-id="@item.Id" data-toggle="tooltip" data-placement="top" title="Details">
+                            <a asp-action="Details" asp-route-id="@item.Id" data-toggle="tooltip" data-placement="top" title="Details">
                                 <i class="bi bi-ticket-detailed-fill" style="color:#9381FF; width:80%"></i> &nbsp;
                             </a>
                             <a asp-action="Delete" asp-route-id="@item.Id" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -92,10 +120,8 @@
     {
         <div class="text-center">
             <h3>
-                No Unit found
+                No Occupant Found
             </h3>
         </div>
     }
 }
-
-

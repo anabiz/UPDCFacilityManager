@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UPDCFacilityManager.Module.Estates.ViewModels;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
 using UPDCFacilityManager.Modules.Estates.ViewModels;
 
@@ -15,9 +16,17 @@ namespace UPDCFacilityManager.Module.Estates.Mapper
         {
             CreateMap<CreateUnitViewModel, Unit>();
 
+            CreateMap<Occupant, OccupantViewModel>()
+                 .ForMember(dest => dest.UnitName, opt => opt.MapFrom(src => src.Unit.Name))
+                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.AccuntStatus));
+
             CreateMap<Unit, UnitViewModel>()
+               .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.AllocationStatus))
                .ForMember(dest => dest.Estate, opt => opt.MapFrom(src => src.Estate.Name))
                .ForMember(dest => dest.Cluster, opt => opt.MapFrom(src => src.Estate.Cluster.Name));
+
+            CreateMap<CreateOccupantViewModel, Occupant>();
+                
         }
     }
 }
