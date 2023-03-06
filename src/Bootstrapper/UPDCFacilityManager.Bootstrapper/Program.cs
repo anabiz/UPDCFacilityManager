@@ -1,6 +1,7 @@
 using UPDCFacilityManager.Modules.Auth.Core;
 using UPDCFacilityManager.Modules.Estates.Core;
 using UPDCFacilityManager.Modules.Residence.Core;
+using UPDCFacilityManager.Shared.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,12 @@ builder.Services.AddEstateConfiguration();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAuthentication();
+builder.Services.AddSharedConfiguration();
+
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = new PathString("/Auth/Login");
+});
 
 
 var app = builder.Build();
