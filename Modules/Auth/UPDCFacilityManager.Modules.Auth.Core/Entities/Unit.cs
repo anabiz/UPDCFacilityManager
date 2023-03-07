@@ -12,6 +12,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Entities
         public Unit() 
         {
             Occupants = new HashSet<Occupant>();
+            Residents= new HashSet<Resident>();
         }
         public string Id { get; set; }
         public string Name { get; set; }
@@ -19,6 +20,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Entities
         public string AllocationStatus { get; set; } = EAllocationStatus.NotAllocated.ToString();
         public string EstateId { get; set; }
         public Estate Estate { get; set;}
+        public ICollection<Resident> Residents { get; set; }
         public ICollection<Occupant> Occupants { get; set; }
     }
 }

@@ -63,40 +63,13 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
             }
             return View(model);
         }
-
-        [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> Occupants([FromRoute] string id, [FromQuery] string search)
+ 
+        public async Task<IActionResult> Delete([FromRoute] string id)
         {
-            if (!string.IsNullOrEmpty(id))
-            {
-                var result = await _unitService.GetUnitOccupantsAsync(id, search);
-                TempData.Keep();
-                return View(result);
-            }
-            return RedirectToAction("index", "Cluster");
+            await _unitService.DeleteUnitAsync(id);
+            return RedirectToAction("index", "Unit");
         }
 
-        [HttpGet]
-        [Authorize]
-        public IActionResult CreateOccupant([FromQuery] string unitId)
-        {
-            TempData["unitId"] = unitId;
-            return View();
-        }
-
-
-        [HttpPost]
-        [Authorize]
-        public async Task<IActionResult> CreateOccupant(CreateOccupantViewModel model, [FromQuery] string unitId)
-        {
-            if (ModelState.IsValid)
-            {
-                //var unitid = TempData["unitId"];
-                await _unitService.CreateOccupantAsync(model, unitId);
-                return RedirectToAction("Occupants", "Unit", new { id = unitId });
-            }
-            return View(model);
-        }
+    
     }
 }

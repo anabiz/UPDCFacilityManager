@@ -43,7 +43,7 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Services
                 .Include(x => x.PhoneNumbers)
                 .Include(x => x.Emails)
                 .Include(x => x.Unit)
-                .Include(x => x.Estate)
+                     .ThenInclude(x => x.Estate)
                      .ThenInclude(x => x.Cluster) as IQueryable<Resident>;
 
             if (!string.IsNullOrEmpty(search))

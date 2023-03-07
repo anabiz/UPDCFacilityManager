@@ -1,8 +1,5 @@
 ﻿
-console.log("helloooo2222");
-
 $(function () {
-    console.log("helloooo")
     let cluster_id = "";
 
     $('#cluster').change(function () {
