@@ -67,6 +67,43 @@ namespace UPDCFacilityManager.Module.Estates.Services
             return _mapper.Map<UnitViewModel>(unit);
         }
 
+        public async Task DeleteOccupantAsync(string occupantId)
+        {
+            var occupant = await _appDbContext.Occupants.
+                FirstOrDefaultAsync(x => x.Id == occupantId);
+
+            if(occupant is not null)
+            {
+                _appDbContext.Occupants.Remove(occupant);
+                _appDbContext.SaveChanges();
+            }
+        }
+
+        public async Task DeleteUnitAsync(string UnitId)
+        {
+            var unit = await _appDbContext.Units
+                .Include(x => x.Occupants)
+                .Include(x => x.Residents)
+                .FirstOrDefaultAsync(x => x.Id == UnitId);
+
+            if(unit is not null && unit.Residents != null)
+            {
+                _appDbContext.Residents.RemoveRange(unit.Residents);
+            }
+            
+            _appDbContext.Units.Remove(unit);
+            _appDbContext.SaveChanges();
+        }
+
+        public async Task<OccupantViewModel> GetOccupantByIdAsync(string occupantId)
+        {
+            var occupant = await _appDbContext.Occupants
+                .Include(x => x.Unit)
+                .FirstOrDefaultAsync(x => x.Id == occupantId);
+
+            return _mapper.Map<OccupantViewModel>(occupant);
+        }
+
         public async Task<UnitViewModel> GetUnitOccupantsAsync(string unitId, string? search = null)
         {
             var units = await _appDbContext.Units.Where(x => x.Id == unitId)

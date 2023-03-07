@@ -12,6 +12,9 @@ namespace UPDCFacilityManager.Module.Estates.Services
     {
         Task<List<UnitViewModel>> BrowseAsync();
         Task<EstateViewModel> GetUnitsAsync(string estateId, string? search=null);
+        Task DeleteUnitAsync(string UnitId);
+        Task DeleteOccupantAsync(string occupantId);
+        Task<OccupantViewModel> GetOccupantByIdAsync(string occupantId);
         Task<string> CreateAsync(CreateUnitViewModel model, string estateId);
         Task<UnitViewModel> GetUnitOccupantsAsync(string unitId, string? search = null);
         Task<UnitViewModel> CreateOccupantAsync(CreateOccupantViewModel model, string unitId);

@@ -23,8 +23,8 @@ namespace UPDCFacilityManager.Modules.Residence.Mapper
             CreateMap<Resident, ResidentViewModel>()
                 .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.PhoneNumbers.ToList()[0].PhoneNumber))
                 .ForMember(dest => dest.Unit, opt => opt.MapFrom(src => src.Unit.Name))
-                .ForMember(dest => dest.Estate, opt => opt.MapFrom(src => src.Estate.Name))
-                .ForMember(dest => dest.Cluster, opt => opt.MapFrom(src => src.Estate.Cluster.Name))
+                .ForMember(dest => dest.Estate, opt => opt.MapFrom(src => src.Unit.Estate.Name))
+                .ForMember(dest => dest.Cluster, opt => opt.MapFrom(src => src.Unit.Estate.Cluster.Name))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Emails.ToList()[0].EmailAddress)); 
 
 

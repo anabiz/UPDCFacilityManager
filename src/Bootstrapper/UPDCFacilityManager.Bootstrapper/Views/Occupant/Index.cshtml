@@ -27,7 +27,7 @@
         </div>
         <div class="col-6">
             <span class="text-end" style="width:100%;display:inline-block;text-align:right">
-                <a asp-action="CreateOccupant" asp-controller="Unit" asp-route-unitId="@unitId" class="btn" style="background-color:#9381FF; color:aliceblue">
+                <a asp-action="Create" asp-controller="Occupant" asp-route-unitId="@unitId" class="btn" style="background-color:#9381FF; color:aliceblue">
                     <i class="bi bi-plus-circle"></i> &nbsp; Add Occupant
                 </a>
             </span>
@@ -115,6 +115,30 @@
                 }
             </tbody>
         </table>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmationModal">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+     
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a type="button" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     }
     else
     {
@@ -124,4 +148,7 @@
             </h3>
         </div>
     }
+}
+@section Scripts {
+    <script src="~/js/occupant.js"></script>
 }
