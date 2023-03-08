@@ -11,6 +11,7 @@ namespace UPDCFacilityManager.Module.Estates.Services
     public interface IUnitService
     {
         Task<List<UnitViewModel>> BrowseAsync();
+        Task<UnitViewModel> GetUnitByIdAsync(string unitId);
         Task<EstateViewModel> GetUnitsAsync(string estateId, string? search=null);
         Task DeleteUnitAsync(string UnitId);
         Task DeleteOccupantAsync(string occupantId);

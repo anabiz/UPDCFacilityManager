@@ -63,8 +63,15 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
             }
             return View(model);
         }
- 
         public async Task<IActionResult> Delete([FromRoute] string id)
+        {
+            var result = await _unitService.GetUnitByIdAsync(id);
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DeleteUnit([FromRoute] string id)
         {
             await _unitService.DeleteUnitAsync(id);
             return RedirectToAction("index", "Unit");

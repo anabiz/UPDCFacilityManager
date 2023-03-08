@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using UPDCFacilityManager.Module.Estates.ViewModels;
 using UPDCFacilityManager.Modules.Auth.Core.Data;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
+using UPDCFacilityManager.Modules.Auth.Core.Migrations;
 using UPDCFacilityManager.Modules.Estates.Services;
 using UPDCFacilityManager.Modules.Estates.ViewModels;
 
@@ -111,6 +112,17 @@ namespace UPDCFacilityManager.Module.Estates.Services
              .FirstOrDefaultAsync(x => x.Id == occupantId);
 
             return _mapper.Map<UpdateOccupantViewModal>(occupant);
+        }
+
+        public async Task<UnitViewModel> GetUnitByIdAsync(string unitId)
+        {
+            var unit = await _appDbContext.Units
+            .Include(x => x.Occupants)
+            .Include(x => x.Estate)
+                 .ThenInclude(x => x.Cluster)
+                     .FirstOrDefaultAsync(x => x.Id == unitId);
+
+            return _mapper.Map<UnitViewModel>(unit);
         }
 
         public async Task<UnitViewModel> GetUnitOccupantsAsync(string unitId, string? search = null)

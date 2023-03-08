@@ -1,0 +1,50 @@
+﻿@model UnitViewModel
+
+@{
+    ViewData["Title"] = "Delete Unit";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this Unit?</h3>
+<div class="">
+    <hr />
+    <div class="text-left ml-4">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Estate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Estate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Cluster)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Cluster)
+            </dd>
+        </dl>
+    </div>
+    
+
+    <form asp-action="DeleteUnit" asp-route-id="@Model.Id">       
+          <div class="mt-4 ml-4">
+                <a asp-action="Index" asp-route-id="@Model.Id" class="btn w-25" style="border:1px solid #FF0000; color:#FF0000;">
+                    Back To List
+                </a>
+                <input type="submit" value="Delete" class="btn w-25" style="background-color: #9381FF; color:#fff" />
+            </div>
+    </form>
+</div>
