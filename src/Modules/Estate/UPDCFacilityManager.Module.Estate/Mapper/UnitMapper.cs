@@ -15,6 +15,8 @@ namespace UPDCFacilityManager.Module.Estates.Mapper
         public UnitMapper() 
         {
             CreateMap<CreateUnitViewModel, Unit>();
+            CreateMap<EditUnitViewModel, Unit>();
+            CreateMap<Unit, EditUnitViewModel>();
 
             CreateMap<Unit, UnitViewModel>()
                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.AllocationStatus))

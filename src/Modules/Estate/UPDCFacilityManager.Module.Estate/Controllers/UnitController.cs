@@ -77,6 +77,21 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
             return RedirectToAction("index", "Unit");
         }
 
-    
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Edit([FromQuery] string unitId)
+        {
+            var result = await _unitService.GetUnitToEditAsync(unitId);
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(EditUnitViewModel model, [FromQuery] string unitId)
+        {
+            var estateId = await _unitService.UpdateUnitAsync(model,unitId);
+            return RedirectToAction("Index", "Unit", new { id = estateId }); ;
+        }
+
     }
 }

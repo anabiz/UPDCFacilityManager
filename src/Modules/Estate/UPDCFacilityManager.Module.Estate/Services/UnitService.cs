@@ -105,13 +105,13 @@ namespace UPDCFacilityManager.Module.Estates.Services
             return _mapper.Map<OccupantViewModel>(occupant);
         }
 
-        public async Task<UpdateOccupantViewModal> GetOccupantToEditAsync(string occupantId)
+        public async Task<EditOccupantViewModal> GetOccupantToEditAsync(string occupantId)
         {
             var occupant = await _appDbContext.Occupants
              .Include(x => x.Unit)
              .FirstOrDefaultAsync(x => x.Id == occupantId);
 
-            return _mapper.Map<UpdateOccupantViewModal>(occupant);
+            return _mapper.Map<EditOccupantViewModal>(occupant);
         }
 
         public async Task<UnitViewModel> GetUnitByIdAsync(string unitId)
@@ -154,6 +154,49 @@ namespace UPDCFacilityManager.Module.Estates.Services
             }
 
             return _mapper.Map<EstateViewModel>(estate);
+        }
+
+        public async Task<EditUnitViewModel> GetUnitToEditAsync(string unitId)
+        {
+            var unit = await _appDbContext.Units
+                     .FirstOrDefaultAsync(x => x.Id == unitId);
+
+            return _mapper.Map<EditUnitViewModel>(unit);
+        }
+
+        public async Task<object> UpdateOccupantAsync(EditOccupantViewModal model, string occupantId)
+        {
+            var occupant = await _appDbContext.Occupants
+              .FirstOrDefaultAsync(x => x.Id == occupantId);
+
+            if (occupant is null)
+            {
+                return null;
+            }
+            var updatedOccupant = _mapper.Map(model, occupant);
+
+            _appDbContext.Occupants.Update(updatedOccupant);
+            _appDbContext.SaveChanges();
+
+            return updatedOccupant;
+        }
+
+        public async Task<string?> UpdateUnitAsync(EditUnitViewModel model, string unitId)
+        {
+            var unit = await _appDbContext.Units
+                .Include(x => x.Estate)
+                .FirstOrDefaultAsync(x => x.Id == unitId);
+
+            if(unit is null)
+            {
+                return null;
+            }
+            var updatedUnit = _mapper.Map(model, unit);
+
+            _appDbContext.Units.Update(updatedUnit);
+            _appDbContext.SaveChanges();
+
+            return unit!.Estate.Id;
         }
     }
 }

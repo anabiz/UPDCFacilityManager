@@ -8,7 +8,7 @@ using UPDCFacilityManager.Modules.Estates.ViewModels;
 
 namespace UPDCFacilityManager.Module.Estates.ViewModels
 {
-    public class OccupantViewModel : UpdateOccupantViewModal
+    public class OccupantViewModel : EditOccupantViewModal
     {
         public string Id { get; set; }
         public string UnitName { get; set; }

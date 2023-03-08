@@ -20,7 +20,7 @@ namespace UPDCFacilityManager.Module.Estates.Mapper
                  .ForMember(dest => dest.UnitId, opt => opt.MapFrom(src => src.Unit.Id))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.AccuntStatus));
 
-            CreateMap<Occupant, UpdateOccupantViewModal>()
+            CreateMap<Occupant, EditOccupantViewModal>()
                  .ForMember(dest => dest.UnitId, opt => opt.MapFrom(src => src.Unit.Id));
         }
     }

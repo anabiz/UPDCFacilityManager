@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UPDCFacilityManager.Module.Estates.ViewModels
 {
-    public class UpdateOccupantViewModal : CreateOccupantViewModel
+    public class EditOccupantViewModal : CreateOccupantViewModel
     {
         public string UnitId { get; set; }
     }

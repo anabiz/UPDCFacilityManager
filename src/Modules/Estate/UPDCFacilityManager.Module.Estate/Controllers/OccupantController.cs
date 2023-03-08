@@ -87,19 +87,12 @@ namespace UPDCFacilityManager.Module.Estates.Controllers
             var result = await _unitService.GetOccupantByIdAsync(id);
             return View(result);
         }
-
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Edit([FromBody] UpdateOccupantViewModal model, [FromQuery] string occupantId)
+        public async Task<IActionResult> Edit([FromForm] EditOccupantViewModal model, [FromQuery] string occupantId)
         {
-
-            if (ModelState.IsValid)
-            {
-                var result = await _unitService.GetOccupantByIdAsync(occupantId);
-                return View(result);
-            }
-           
-            return View(model);
+            await _unitService.UpdateOccupantAsync(model, occupantId);
+            return RedirectToAction("Index", "Occupant", new { id = model.UnitId }); ;
         }
 
         [HttpGet]
