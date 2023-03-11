@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UPDCFacilityManager.Modules.Auth.Core.Data;
 using UPDCFacilityManager.Modules.Auth.Core.Entities;
+using UPDCFacilityManager.Modules.Auth.Core.Migrations;
 using UPDCFacilityManager.Modules.Auth.Core.Repositories;
 using UPDCFacilityManager.Modules.Auth.Core.ViewModels;
 using UPDCFacilityManager.Modules.Residence.Core.Repositories;
@@ -82,6 +83,19 @@ namespace UPDCFacilityManager.Modules.Auth.Core.Services
             _appDbContext.SaveChanges();
 
 
+        }
+
+        public async Task<ResidentViewModel> GetResidentByIdAsync(string id)
+        {
+            var resident = await _appDbContext.Residents
+                .Include(x => x.Unit)
+                      .ThenInclude(x => x.Estate)
+                .Include(x => x.PhoneNumbers)
+                .Include(x => x.Emails)
+            .Include(x => x.Unit)
+              .FirstOrDefaultAsync(x => x.Id == id);
+
+            return _mapper.Map<ResidentViewModel>(resident);
         }
 
         public Task UpdateAsync(UpdateResidentViewModel model)

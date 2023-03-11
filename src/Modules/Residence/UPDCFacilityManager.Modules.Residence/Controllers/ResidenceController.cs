@@ -85,5 +85,29 @@ namespace UPDCFacilityManager.Modules.Residence.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Details([FromRoute] string id)
+        {
+            var result = await _residentService.GetResidentByIdAsync(id);
+            return View(result);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Delete([FromRoute] string id)
+        {
+            var result = await _residentService.GetResidentByIdAsync(id);
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DeleteResident([FromRoute] string id)
+        {
+            var result = await _residentService.GetResidentByIdAsync(id);
+            return View(result);
+        }
     }
 }

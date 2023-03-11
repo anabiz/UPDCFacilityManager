@@ -1,11 +1,11 @@
 ﻿@model ResidentViewModel
 
 @{
-    ViewData["Title"] = "Resident Details";
+    ViewData["Title"] = "Delete Resident";
 }
-<div>
-    <h1>Resident Details</h1>
-</div>
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this Resident?</h3>
 
 <div class="">
     <hr />
@@ -51,14 +51,12 @@
     </div>
 
 
-    <form asp-action="DeleteOccupant" asp-route-id="@Model.Id">
+    <form asp-action="DeleteResident" asp-route-id="@Model.Id">
         <div class="mt-4 ml-4">
             <a asp-action="ListAll" class="btn w-25" style="border:1px solid #FF0000; color:#FF0000;">
                 Back To List
             </a>
-            <a asp-action="Edit" asp-route-occupantId="@Model.Id" class="btn w-25" style="background-color: #9381FF; color:#fff">
-                Edit
-            </a>
+            <input type="submit" value="Delete" class="btn w-25" style="background-color: #9381FF; color:#fff"/>
         </div>
     </form>
 </div>
